@@ -1,6 +1,6 @@
 ﻿namespace TP2.Forms
 {
-    partial class FormAgregar
+    partial class Agregar
     {
         /// <summary>
         /// Required designer variable.
@@ -30,19 +30,19 @@
         {
             lblTituloAgregar = new Label();
             lblAgregarCodigoProducto = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtCodigo = new TextBox();
+            txtNombre = new TextBox();
             lblAgregarNombreProducto = new Label();
-            textBox3 = new TextBox();
+            txtDescripcion = new TextBox();
             lblAgregarDescripcion = new Label();
-            cbAgregarMarca = new ComboBox();
-            cbAgregarCategoria = new ComboBox();
+            cmbMarca = new ComboBox();
+            cmbCategoria = new ComboBox();
             lblAgregarMarca = new Label();
             lblAgregarCategoria = new Label();
-            numAgregarPrecio = new NumericUpDown();
             lblAgregarPrecio = new Label();
-            btnAgregarAgregar = new Button();
-            ((System.ComponentModel.ISupportInitialize)numAgregarPrecio).BeginInit();
+            btnAgregar = new Button();
+            txtPrecio = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)txtPrecio).BeginInit();
             SuspendLayout();
             // 
             // lblTituloAgregar
@@ -51,80 +51,83 @@
             lblTituloAgregar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             lblTituloAgregar.Location = new Point(12, 9);
             lblTituloAgregar.Name = "lblTituloAgregar";
-            lblTituloAgregar.Size = new Size(170, 28);
+            lblTituloAgregar.Size = new Size(193, 28);
             lblTituloAgregar.TabIndex = 0;
-            lblTituloAgregar.Text = "Agregar producto";
+            lblTituloAgregar.Text = "AGREGAR ARTICULO";
             // 
             // lblAgregarCodigoProducto
             // 
             lblAgregarCodigoProducto.AutoSize = true;
-            lblAgregarCodigoProducto.Location = new Point(12, 62);
+            lblAgregarCodigoProducto.Location = new Point(12, 63);
             lblAgregarCodigoProducto.Name = "lblAgregarCodigoProducto";
             lblAgregarCodigoProducto.Size = new Size(114, 15);
             lblAgregarCodigoProducto.TabIndex = 1;
             lblAgregarCodigoProducto.Text = "Codigo de producto";
-            lblAgregarCodigoProducto.Click += label1_Click;
             // 
-            // textBox1
+            // txtCodigo
             // 
-            textBox1.Location = new Point(130, 59);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
+            txtCodigo.Location = new Point(130, 59);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.Size = new Size(67, 23);
+            txtCodigo.TabIndex = 2;
+            txtCodigo.KeyDown += txtCodigo_KeyDown;
             // 
-            // textBox2
+            // txtNombre
             // 
-            textBox2.Location = new Point(130, 88);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 4;
+            txtNombre.Location = new Point(272, 59);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(381, 23);
+            txtNombre.TabIndex = 4;
+            txtNombre.KeyDown += txtNombre_KeyDown;
             // 
             // lblAgregarNombreProducto
             // 
             lblAgregarNombreProducto.AutoSize = true;
-            lblAgregarNombreProducto.Location = new Point(12, 91);
+            lblAgregarNombreProducto.Location = new Point(215, 63);
             lblAgregarNombreProducto.Name = "lblAgregarNombreProducto";
             lblAgregarNombreProducto.Size = new Size(51, 15);
             lblAgregarNombreProducto.TabIndex = 3;
             lblAgregarNombreProducto.Text = "Nombre";
             // 
-            // textBox3
+            // txtDescripcion
             // 
-            textBox3.Location = new Point(130, 117);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
+            txtDescripcion.Location = new Point(130, 88);
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(523, 23);
+            txtDescripcion.TabIndex = 6;
+            txtDescripcion.KeyDown += txtDescripcion_KeyDown;
             // 
             // lblAgregarDescripcion
             // 
             lblAgregarDescripcion.AutoSize = true;
-            lblAgregarDescripcion.Location = new Point(12, 120);
+            lblAgregarDescripcion.Location = new Point(12, 92);
             lblAgregarDescripcion.Name = "lblAgregarDescripcion";
             lblAgregarDescripcion.Size = new Size(69, 15);
             lblAgregarDescripcion.TabIndex = 5;
             lblAgregarDescripcion.Text = "Descripcion";
-            lblAgregarDescripcion.Click += label3_Click;
             // 
-            // cbAgregarMarca
+            // cmbMarca
             // 
-            cbAgregarMarca.FormattingEnabled = true;
-            cbAgregarMarca.Location = new Point(130, 146);
-            cbAgregarMarca.Name = "cbAgregarMarca";
-            cbAgregarMarca.Size = new Size(121, 23);
-            cbAgregarMarca.TabIndex = 7;
+            cmbMarca.FormattingEnabled = true;
+            cmbMarca.Location = new Point(130, 117);
+            cmbMarca.Name = "cmbMarca";
+            cmbMarca.Size = new Size(231, 23);
+            cmbMarca.TabIndex = 7;
+            cmbMarca.DropDownClosed += cmbMarca_DropDownClosed;
             // 
-            // cbAgregarCategoria
+            // cmbCategoria
             // 
-            cbAgregarCategoria.FormattingEnabled = true;
-            cbAgregarCategoria.Location = new Point(130, 175);
-            cbAgregarCategoria.Name = "cbAgregarCategoria";
-            cbAgregarCategoria.Size = new Size(121, 23);
-            cbAgregarCategoria.TabIndex = 8;
+            cmbCategoria.FormattingEnabled = true;
+            cmbCategoria.Location = new Point(447, 117);
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.Size = new Size(206, 23);
+            cmbCategoria.TabIndex = 8;
+            cmbCategoria.DropDownClosed += cmbCategoria_DropDownClosed;
             // 
             // lblAgregarMarca
             // 
             lblAgregarMarca.AutoSize = true;
-            lblAgregarMarca.Location = new Point(12, 149);
+            lblAgregarMarca.Location = new Point(12, 121);
             lblAgregarMarca.Name = "lblAgregarMarca";
             lblAgregarMarca.Size = new Size(40, 15);
             lblAgregarMarca.TabIndex = 9;
@@ -133,60 +136,64 @@
             // lblAgregarCategoria
             // 
             lblAgregarCategoria.AutoSize = true;
-            lblAgregarCategoria.Location = new Point(12, 178);
+            lblAgregarCategoria.Location = new Point(367, 121);
             lblAgregarCategoria.Name = "lblAgregarCategoria";
             lblAgregarCategoria.Size = new Size(58, 15);
             lblAgregarCategoria.TabIndex = 10;
             lblAgregarCategoria.Text = "Categoria";
             // 
-            // numAgregarPrecio
-            // 
-            numAgregarPrecio.Location = new Point(131, 204);
-            numAgregarPrecio.Name = "numAgregarPrecio";
-            numAgregarPrecio.Size = new Size(120, 23);
-            numAgregarPrecio.TabIndex = 11;
-            // 
             // lblAgregarPrecio
             // 
             lblAgregarPrecio.AutoSize = true;
-            lblAgregarPrecio.Location = new Point(12, 206);
+            lblAgregarPrecio.Location = new Point(12, 150);
             lblAgregarPrecio.Name = "lblAgregarPrecio";
             lblAgregarPrecio.Size = new Size(40, 15);
             lblAgregarPrecio.TabIndex = 12;
             lblAgregarPrecio.Text = "Precio";
             lblAgregarPrecio.UseWaitCursor = true;
             // 
-            // btnAgregarAgregar
+            // btnAgregar
             // 
-            btnAgregarAgregar.Location = new Point(12, 388);
-            btnAgregarAgregar.Name = "btnAgregarAgregar";
-            btnAgregarAgregar.Size = new Size(147, 50);
-            btnAgregarAgregar.TabIndex = 13;
-            btnAgregarAgregar.Text = "Agregar";
-            btnAgregarAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(239, 199);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(230, 50);
+            btnAgregar.TabIndex = 13;
+            btnAgregar.Text = "AGREGAR ARTICULO";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
-            // FormAgregar
+            // txtPrecio
+            // 
+            txtPrecio.DecimalPlaces = 2;
+            txtPrecio.Location = new Point(130, 146);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(120, 23);
+            txtPrecio.TabIndex = 15;
+            txtPrecio.TextAlign = HorizontalAlignment.Right;
+            // 
+            // Agregar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnAgregarAgregar);
+            Controls.Add(txtPrecio);
+            Controls.Add(btnAgregar);
             Controls.Add(lblAgregarPrecio);
-            Controls.Add(numAgregarPrecio);
             Controls.Add(lblAgregarCategoria);
             Controls.Add(lblAgregarMarca);
-            Controls.Add(cbAgregarCategoria);
-            Controls.Add(cbAgregarMarca);
-            Controls.Add(textBox3);
+            Controls.Add(cmbCategoria);
+            Controls.Add(cmbMarca);
+            Controls.Add(txtDescripcion);
             Controls.Add(lblAgregarDescripcion);
-            Controls.Add(textBox2);
+            Controls.Add(txtNombre);
             Controls.Add(lblAgregarNombreProducto);
-            Controls.Add(textBox1);
+            Controls.Add(txtCodigo);
             Controls.Add(lblAgregarCodigoProducto);
             Controls.Add(lblTituloAgregar);
-            Name = "FormAgregar";
-            Text = "FormAgregar";
-            ((System.ComponentModel.ISupportInitialize)numAgregarPrecio).EndInit();
+            Name = "Agregar";
+            Load += Agregar_Load;
+            Shown += FormAgregar_Shown;
+            ((System.ComponentModel.ISupportInitialize)txtPrecio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,17 +202,17 @@
 
         private Label lblTituloAgregar;
         private Label lblAgregarCodigoProducto;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtCodigo;
+        private TextBox txtNombre;
         private Label lblAgregarNombreProducto;
-        private TextBox textBox3;
+        private TextBox txtDescripcion;
         private Label lblAgregarDescripcion;
-        private ComboBox cbAgregarMarca;
-        private ComboBox cbAgregarCategoria;
+        private ComboBox cmbMarca;
+        private ComboBox cmbCategoria;
         private Label lblAgregarMarca;
         private Label lblAgregarCategoria;
-        private NumericUpDown numAgregarPrecio;
         private Label lblAgregarPrecio;
-        private Button btnAgregarAgregar;
+        private Button btnAgregar;
+        private NumericUpDown txtPrecio;
     }
 }
