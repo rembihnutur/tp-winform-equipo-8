@@ -39,7 +39,9 @@
             Marca = new DataGridViewTextBoxColumn();
             IdMarca = new DataGridViewTextBoxColumn();
             btnGrabarNuevo = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTituloProductos
@@ -63,7 +65,7 @@
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
             dgvArticulos.RowTemplate.Height = 25;
-            dgvArticulos.Size = new Size(790, 385);
+            dgvArticulos.Size = new Size(643, 385);
             dgvArticulos.TabIndex = 1;
             // 
             // Id
@@ -135,17 +137,27 @@
             btnGrabarNuevo.Text = "AGREGAR NUEVO";
             btnGrabarNuevo.UseVisualStyleBackColor = true;
             // 
-            // FormListaProductos
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(654, 60);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(136, 115);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(btnGrabarNuevo);
             Controls.Add(dgvArticulos);
             Controls.Add(lblTituloProductos);
-            Name = "FormListaProductos";
+            Name = "Lista";
             Load += FormListaProductos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,5 +175,6 @@
         private DataGridViewTextBoxColumn Marca;
         private DataGridViewTextBoxColumn IdMarca;
         private Button btnGrabarNuevo;
+        private PictureBox pictureBox1;
     }
 }

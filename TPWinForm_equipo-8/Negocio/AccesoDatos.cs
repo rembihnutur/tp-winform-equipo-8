@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Negocio
 {
@@ -14,16 +15,30 @@ namespace Negocio
 
 
         public AccesoDatos() {
-            conn = new SqlConnection("Server=.\\SQLExpress;Database=CATALOGO_P3_DB;Trusted_Connection=True;");
-            cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
+
+                conn = new SqlConnection("Server=.\\SQLExpress;Database=CATALOGO_P3_DB;Trusted_Connection=True;");
+                cmd = new SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+            
         }
 
         private void Preparar(string consulta)
         {
-            conn.Open();
-            cmd.Connection = conn;
-            cmd.CommandText = consulta;
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = consulta;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public SqlDataReader Leer(string consulta) 
@@ -40,7 +55,10 @@ namespace Negocio
 
         public void Close()
         {
-            conn.Close();   
+            if (conn.State != ConnectionState.Closed)
+            {
+                conn.Close();
+            }
         }
     }
 }
