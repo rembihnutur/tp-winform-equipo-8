@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            btnMarcas = new Button();
+            btnCategorias = new Button();
             btnAgregar = new Button();
             btnBuscar = new Button();
             btnLista = new Button();
             lblInicio = new Label();
             panelDesktop = new Panel();
-            btnCategorias = new Button();
-            btnMarcas = new Button();
             panelMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +52,39 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(189, 450);
             panelMenu.TabIndex = 0;
-            panelMenu.Paint += panel1_Paint;
+            // 
+            // btnMarcas
+            // 
+            btnMarcas.Dock = DockStyle.Top;
+            btnMarcas.FlatAppearance.BorderSize = 0;
+            btnMarcas.FlatStyle = FlatStyle.Flat;
+            btnMarcas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMarcas.ForeColor = SystemColors.ButtonFace;
+            btnMarcas.Location = new Point(0, 240);
+            btnMarcas.Name = "btnMarcas";
+            btnMarcas.Padding = new Padding(5, 0, 0, 0);
+            btnMarcas.Size = new Size(189, 60);
+            btnMarcas.TabIndex = 4;
+            btnMarcas.Text = "Marcas";
+            btnMarcas.TextAlign = ContentAlignment.MiddleLeft;
+            btnMarcas.UseVisualStyleBackColor = true;
+            // 
+            // btnCategorias
+            // 
+            btnCategorias.Dock = DockStyle.Top;
+            btnCategorias.FlatAppearance.BorderSize = 0;
+            btnCategorias.FlatStyle = FlatStyle.Flat;
+            btnCategorias.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCategorias.ForeColor = SystemColors.ButtonFace;
+            btnCategorias.Location = new Point(0, 180);
+            btnCategorias.Name = "btnCategorias";
+            btnCategorias.Padding = new Padding(5, 0, 0, 0);
+            btnCategorias.Size = new Size(189, 60);
+            btnCategorias.TabIndex = 3;
+            btnCategorias.Text = "Categorias";
+            btnCategorias.TextAlign = ContentAlignment.MiddleLeft;
+            btnCategorias.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnCategorias.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
@@ -66,7 +98,7 @@
             btnAgregar.Padding = new Padding(5, 0, 0, 0);
             btnAgregar.Size = new Size(189, 60);
             btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "Agregar Producto";
             btnAgregar.TextAlign = ContentAlignment.MiddleLeft;
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.UseWaitCursor = true;
@@ -88,7 +120,6 @@
             btnBuscar.TextAlign = ContentAlignment.MiddleLeft;
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.UseWaitCursor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnLista
             // 
@@ -126,41 +157,6 @@
             panelDesktop.Size = new Size(611, 450);
             panelDesktop.TabIndex = 2;
             // 
-            // btnCategorias
-            // 
-            btnCategorias.Dock = DockStyle.Top;
-            btnCategorias.FlatAppearance.BorderSize = 0;
-            btnCategorias.FlatStyle = FlatStyle.Flat;
-            btnCategorias.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCategorias.ForeColor = SystemColors.ButtonFace;
-            btnCategorias.Location = new Point(0, 180);
-            btnCategorias.Name = "btnCategorias";
-            btnCategorias.Padding = new Padding(5, 0, 0, 0);
-            btnCategorias.Size = new Size(189, 60);
-            btnCategorias.TabIndex = 3;
-            btnCategorias.Text = "Categorias";
-            btnCategorias.TextAlign = ContentAlignment.MiddleLeft;
-            btnCategorias.TextImageRelation = TextImageRelation.TextBeforeImage;
-            btnCategorias.UseVisualStyleBackColor = true;
-            btnCategorias.Click += btnCategorias_Click;
-            // 
-            // btnMarcas
-            // 
-            btnMarcas.Dock = DockStyle.Top;
-            btnMarcas.FlatAppearance.BorderSize = 0;
-            btnMarcas.FlatStyle = FlatStyle.Flat;
-            btnMarcas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnMarcas.ForeColor = SystemColors.ButtonFace;
-            btnMarcas.Location = new Point(0, 240);
-            btnMarcas.Name = "btnMarcas";
-            btnMarcas.Padding = new Padding(5, 0, 0, 0);
-            btnMarcas.Size = new Size(189, 60);
-            btnMarcas.TabIndex = 4;
-            btnMarcas.Text = "Marcas";
-            btnMarcas.TextAlign = ContentAlignment.MiddleLeft;
-            btnMarcas.UseVisualStyleBackColor = true;
-            btnMarcas.Click += btnMarcas_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -171,7 +167,7 @@
             Controls.Add(panelMenu);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
+            WindowState = FormWindowState.Maximized;
             panelMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

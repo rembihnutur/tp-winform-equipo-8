@@ -1,17 +1,17 @@
+using dominio;
+using Negocio;
+
 namespace TP2
 {
     public partial class Form1 : Form
     {
 
-        private Form formActivo;
+        private Form? formActivo;
+
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            formActivo = null;
         }
 
         private void AbrirForm(Form childForm, object btnSender)
@@ -28,33 +28,15 @@ namespace TP2
             childForm.Show();
             lblInicio.Text = childForm.Text;
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
+        
         private void btnLista_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.FormListaProductos(), sender);
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
+            AbrirForm(new Forms.Lista(), sender);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.FormAgregar(), sender);
-        }
-
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMarcas_Click(object sender, EventArgs e)
-        {
-
+            AbrirForm(new Forms.Agregar(), sender);
         }
     }
 }
