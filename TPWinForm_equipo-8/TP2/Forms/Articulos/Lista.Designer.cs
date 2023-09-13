@@ -70,6 +70,7 @@
             dgvArticulos.RowTemplate.Height = 25;
             dgvArticulos.Size = new Size(585, 269);
             dgvArticulos.TabIndex = 1;
+            dgvArticulos.CellContentClick += dgvArticulos_CellContentClick;
             // 
             // Id
             // 

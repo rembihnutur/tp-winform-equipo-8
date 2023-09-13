@@ -1,5 +1,6 @@
 using dominio;
 using Negocio;
+using TP2.Forms;
 
 namespace TP2
 {
@@ -28,7 +29,7 @@ namespace TP2
             childForm.Show();
             lblInicio.Text = childForm.Text;
         }
-        
+
         private void btnLista_Click(object sender, EventArgs e)
         {
             AbrirForm(new Forms.Lista(), sender);
@@ -37,6 +38,16 @@ namespace TP2
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AbrirForm(new Forms.Agregar(), sender);
+        }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Forms.ListaMarcas(), sender);
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Forms.ListaCategorias(), sender);
         }
     }
 }

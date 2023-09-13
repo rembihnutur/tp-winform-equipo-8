@@ -25,7 +25,7 @@ namespace TP2.Forms
         {
             try
             {
-                articulos = Articulos.Listar();
+                articulos = Negocio.Articulos.Listar();
                 dgvArticulos.Rows.Clear();
 
                 foreach (var articulo in articulos)
@@ -90,6 +90,11 @@ namespace TP2.Forms
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = articulosFiltrados;
             ocultarColumna();
+        }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

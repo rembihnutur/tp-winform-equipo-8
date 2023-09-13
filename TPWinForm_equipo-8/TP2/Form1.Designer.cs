@@ -68,6 +68,7 @@
             btnMarcas.Text = "Marcas";
             btnMarcas.TextAlign = ContentAlignment.MiddleLeft;
             btnMarcas.UseVisualStyleBackColor = true;
+            btnMarcas.Click += btnMarcas_Click;
             // 
             // btnCategorias
             // 
@@ -85,6 +86,7 @@
             btnCategorias.TextAlign = ContentAlignment.MiddleLeft;
             btnCategorias.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnCategorias.UseVisualStyleBackColor = true;
+            btnCategorias.Click += btnCategorias_Click;
             // 
             // btnAgregar
             // 
