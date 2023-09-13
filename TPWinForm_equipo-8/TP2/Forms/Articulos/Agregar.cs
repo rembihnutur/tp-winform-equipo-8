@@ -37,6 +37,13 @@ namespace TP2.Forms
                 return;
             }
 
+            // Evitamos duplicado de articulos
+            if (Articulos.Existe(txtCodigo.Text))
+            {
+                MessageBox.Show("Ya existe un Articulo con este Código", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             // Armamos el objeto que vamos a grabar.
             Articulo articulo = new Articulo()
             {
@@ -75,6 +82,12 @@ namespace TP2.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 if (txtCodigo.Text.Trim().Length == 0) return;
+
+                if (Articulos.Existe(txtCodigo.Text))
+                {
+                    MessageBox.Show("Ya existe un Articulo con este Código", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
 
                 txtNombre.Focus();
             }
