@@ -42,12 +42,12 @@ namespace TP2
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.ListaMarcas(), sender);
+            AbrirForm(new Forms.ListaMarcas());
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.ListaCategorias(), sender);
+            AbrirForm(new Forms.ListaCategorias());
         }
     }
 }

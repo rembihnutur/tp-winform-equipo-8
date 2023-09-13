@@ -30,11 +30,11 @@ namespace Negocio
                     cmd.Connection = conn;
                     cmd.CommandText = consulta;
                 }
-                catch (SqlException ex)
+                catch (SqlException)
                 {
                     throw;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }

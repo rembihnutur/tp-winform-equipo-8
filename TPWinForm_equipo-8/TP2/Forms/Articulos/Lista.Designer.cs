@@ -200,7 +200,7 @@
             // lblFiltro
             // 
             lblFiltro.AutoSize = true;
-            lblFiltro.Location = new Point(32, 70);
+            lblFiltro.Location = new Point(165, 22);
             lblFiltro.Name = "lblFiltro";
             lblFiltro.Size = new Size(34, 15);
             lblFiltro.TabIndex = 4;
@@ -208,7 +208,7 @@
             // 
             // txtFiltro
             // 
-            txtFiltro.Location = new Point(230, 66);
+            txtFiltro.Location = new Point(363, 18);
             txtFiltro.Name = "txtFiltro";
             txtFiltro.Size = new Size(194, 23);
             txtFiltro.TabIndex = 5;
@@ -218,7 +218,7 @@
             // 
             cboCampo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCampo.FormattingEnabled = true;
-            cboCampo.Location = new Point(86, 66);
+            cboCampo.Location = new Point(219, 18);
             cboCampo.Name = "cboCampo";
             cboCampo.Size = new Size(121, 23);
             cboCampo.TabIndex = 7;
@@ -263,7 +263,6 @@
         private Button btnNavIzq;
         private Button btnNavDer;
         private Panel pnlNavegacion;
-        private Button btnGrabarNuevo;
         private Label lblFiltro;
         private TextBox txtFiltro;
         private ComboBox cboCampo;

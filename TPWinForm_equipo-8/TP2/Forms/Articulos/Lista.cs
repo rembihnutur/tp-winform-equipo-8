@@ -54,6 +54,10 @@ namespace TP2.Forms
                     dgvArticulos.Rows[row].Cells["Imagenes"].Value = articulo.Imagenes.Aggregate("", (p, n) => $"{p};{n.Url}").TrimStart(';');
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnGrabarNuevo_Click(object sender, EventArgs e)
@@ -116,7 +120,8 @@ namespace TP2.Forms
             catch (Exception)
             {
                 // Se intenta ir a alguna imagen valida (Caso del Articulo con ID == 2).
-                if (idxImg > 0) {
+                if (idxImg > 0)
+                {
                     btnNavIzq.PerformClick();
                 }
                 else
@@ -124,10 +129,6 @@ namespace TP2.Forms
                     btnNavDer.PerformClick();
                 }
                 return;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
         private void ocultarColumna()
@@ -154,7 +155,7 @@ namespace TP2.Forms
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> articulosFiltrados;
-            string campo = cboCampo.SelectedItem?.ToString();
+            string? campo = cboCampo.SelectedItem?.ToString();
             if (campo == null)
             {
                 txtFiltro.Text = "";
