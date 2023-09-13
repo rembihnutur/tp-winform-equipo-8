@@ -17,13 +17,25 @@ namespace TP2.Forms
             {
                 if (ctrl.Text.Trim().Length == 0)
                 {
-                    // XXX: Colocar algun mensaje?
+                    MessageBox.Show(string.Format("Debe indicar algún valor para {0}", ctrl.Name.Replace("txt", "")), "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    ctrl.Focus();
                     return;
                 }
             }
 
-            if ((int)cmbMarca.SelectedValue < 1) return;
-            if ((int)cmbCategoria.SelectedValue < 1) return;
+            if ((int)cmbMarca.SelectedValue < 1)
+            {
+                MessageBox.Show("Debe indicar alga Marca", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cmbMarca.DroppedDown = true;
+                return;
+            }
+
+            if ((int)cmbCategoria.SelectedValue < 1)
+            {
+                MessageBox.Show("Debe indicar alguna Categoría", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cmbCategoria.DroppedDown = true;
+                return;
+            }
 
             // Armamos el objeto que vamos a grabar.
             Articulo articulo = new Articulo()
@@ -39,7 +51,8 @@ namespace TP2.Forms
             // Chequeamos que se haya podido grabar. Faltaría chequear posibles excepciones.
             if (!Articulos.Grabar(articulo))
             {
-                MessageBox.Show("No se ha podido grabar correctamente el Articulo");
+                MessageBox.Show("No se ha podido grabar correctamente el Articulo", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
             }
 
             // Limpiamos el formulario
@@ -51,8 +64,10 @@ namespace TP2.Forms
             cmbMarca.SelectedIndex = -1;
             cmbCategoria.SelectedIndex = -1;
 
-            // Devolvemos el foco al primer control.
-            txtCodigo.Focus();
+            MessageBox.Show("Articulo grabado con éxito!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Cerramos el formulario pasando el flujo del programa hacia el listado de los Articulos.
+            ((Form1)ParentForm).AbrirForm(new Lista());
         }
 
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)

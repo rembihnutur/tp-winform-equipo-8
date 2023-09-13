@@ -14,7 +14,7 @@ namespace TP2
             formActivo = null;
         }
 
-        private void AbrirForm(Form childForm, object btnSender)
+        public void AbrirForm(Form childForm)
         {
             if (formActivo != null)
                 formActivo.Close();
@@ -22,21 +22,21 @@ namespace TP2
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.panelDesktop.Controls.Add(childForm);
-            this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            this.panelDesktop.Controls.Add(childForm);
+            this.panelDesktop.Tag = childForm;
             lblInicio.Text = childForm.Text;
         }
-        
+
         private void btnLista_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.Lista(), sender);
+            AbrirForm(new Forms.Lista());
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.Agregar(), sender);
+            btnLista.PerformClick();
         }
     }
 }

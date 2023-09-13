@@ -129,17 +129,20 @@
             // 
             // btnGrabarNuevo
             // 
-            btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnGrabarNuevo.Location = new Point(659, 12);
+            btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGrabarNuevo.Location = new Point(655, 12);
             btnGrabarNuevo.Name = "btnGrabarNuevo";
             btnGrabarNuevo.Size = new Size(136, 39);
             btnGrabarNuevo.TabIndex = 2;
             btnGrabarNuevo.Text = "AGREGAR NUEVO";
             btnGrabarNuevo.UseVisualStyleBackColor = true;
+            btnGrabarNuevo.Click += btnGrabarNuevo_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(654, 60);
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox1.Location = new Point(655, 60);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(136, 115);
             pictureBox1.TabIndex = 3;

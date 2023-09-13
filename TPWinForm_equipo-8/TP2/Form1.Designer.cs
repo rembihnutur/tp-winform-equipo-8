@@ -31,7 +31,6 @@
             panelMenu = new Panel();
             btnMarcas = new Button();
             btnCategorias = new Button();
-            btnAgregar = new Button();
             btnBuscar = new Button();
             btnLista = new Button();
             lblInicio = new Label();
@@ -44,7 +43,6 @@
             panelMenu.BackColor = SystemColors.Highlight;
             panelMenu.Controls.Add(btnMarcas);
             panelMenu.Controls.Add(btnCategorias);
-            panelMenu.Controls.Add(btnAgregar);
             panelMenu.Controls.Add(btnBuscar);
             panelMenu.Controls.Add(btnLista);
             panelMenu.Dock = DockStyle.Left;
@@ -60,7 +58,7 @@
             btnMarcas.FlatStyle = FlatStyle.Flat;
             btnMarcas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnMarcas.ForeColor = SystemColors.ButtonFace;
-            btnMarcas.Location = new Point(0, 240);
+            btnMarcas.Location = new Point(0, 180);
             btnMarcas.Name = "btnMarcas";
             btnMarcas.Padding = new Padding(5, 0, 0, 0);
             btnMarcas.Size = new Size(189, 60);
@@ -76,7 +74,7 @@
             btnCategorias.FlatStyle = FlatStyle.Flat;
             btnCategorias.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCategorias.ForeColor = SystemColors.ButtonFace;
-            btnCategorias.Location = new Point(0, 180);
+            btnCategorias.Location = new Point(0, 120);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.Padding = new Padding(5, 0, 0, 0);
             btnCategorias.Size = new Size(189, 60);
@@ -85,24 +83,6 @@
             btnCategorias.TextAlign = ContentAlignment.MiddleLeft;
             btnCategorias.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnCategorias.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Dock = DockStyle.Top;
-            btnAgregar.FlatAppearance.BorderSize = 0;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.ForeColor = SystemColors.ButtonFace;
-            btnAgregar.Location = new Point(0, 120);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Padding = new Padding(5, 0, 0, 0);
-            btnAgregar.Size = new Size(189, 60);
-            btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "Agregar Producto";
-            btnAgregar.TextAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.UseWaitCursor = true;
-            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnBuscar
             // 
@@ -133,7 +113,7 @@
             btnLista.Padding = new Padding(5, 0, 0, 0);
             btnLista.Size = new Size(189, 60);
             btnLista.TabIndex = 0;
-            btnLista.Text = "Lista de productos";
+            btnLista.Text = "Productos";
             btnLista.TextAlign = ContentAlignment.MiddleLeft;
             btnLista.UseVisualStyleBackColor = true;
             btnLista.Click += btnLista_Click;
@@ -166,8 +146,8 @@
             Controls.Add(lblInicio);
             Controls.Add(panelMenu);
             Name = "Form1";
-            Text = "Form1";
             WindowState = FormWindowState.Maximized;
+            Load += Form1_Load;
             panelMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -178,7 +158,6 @@
         private Panel panelMenu;
         private Button btnLista;
         private Button btnBuscar;
-        private Button btnAgregar;
         private Label lblInicio;
         private Panel panelDesktop;
         private Button btnMarcas;

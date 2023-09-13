@@ -30,5 +30,10 @@ namespace TP2.Forms
                 dgvArticulos.Rows[row].Cells["IdMarca"].Value = articulo.IdMarca;
             }
         }
+
+        private void btnGrabarNuevo_Click(object sender, EventArgs e)
+        {
+            ((Form1)ParentForm).AbrirForm(new Agregar());
+        }
     }
 }
