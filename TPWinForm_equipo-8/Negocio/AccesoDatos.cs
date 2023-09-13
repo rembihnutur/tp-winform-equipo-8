@@ -22,19 +22,22 @@ namespace Negocio
 
         private void Preparar(string consulta)
         {
-            try
+            if (conn.State == ConnectionState.Closed)
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = consulta;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
+                try
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = consulta;
+                }
+                catch (SqlException ex)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
         }
 

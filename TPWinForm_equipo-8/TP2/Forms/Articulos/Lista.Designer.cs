@@ -44,6 +44,9 @@
             btnNavIzq = new Button();
             btnNavDer = new Button();
             pnlNavegacion = new Panel();
+            lblFiltro = new Label();
+            txtFiltro = new TextBox();
+            cboCampo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
@@ -194,6 +197,32 @@
             pnlNavegacion.Size = new Size(326, 43);
             pnlNavegacion.TabIndex = 6;
             // 
+            // lblFiltro
+            // 
+            lblFiltro.AutoSize = true;
+            lblFiltro.Location = new Point(32, 70);
+            lblFiltro.Name = "lblFiltro";
+            lblFiltro.Size = new Size(34, 15);
+            lblFiltro.TabIndex = 4;
+            lblFiltro.Text = "Filtro";
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(230, 66);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(194, 23);
+            txtFiltro.TabIndex = 5;
+            txtFiltro.TextChanged += txtFiltro_TextChanged;
+            // 
+            // cboCampo
+            // 
+            cboCampo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCampo.FormattingEnabled = true;
+            cboCampo.Location = new Point(86, 66);
+            cboCampo.Name = "cboCampo";
+            cboCampo.Size = new Size(121, 23);
+            cboCampo.TabIndex = 7;
+            // 
             // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -201,6 +230,9 @@
             ClientSize = new Size(800, 474);
             Controls.Add(pnlNavegacion);
             Controls.Add(picImagen);
+            Controls.Add(cboCampo);
+            Controls.Add(txtFiltro);
+            Controls.Add(lblFiltro);
             Controls.Add(btnGrabarNuevo);
             Controls.Add(dgvArticulos);
             Controls.Add(lblTituloProductos);
@@ -231,5 +263,9 @@
         private Button btnNavIzq;
         private Button btnNavDer;
         private Panel pnlNavegacion;
+        private Button btnGrabarNuevo;
+        private Label lblFiltro;
+        private TextBox txtFiltro;
+        private ComboBox cboCampo;
     }
 }

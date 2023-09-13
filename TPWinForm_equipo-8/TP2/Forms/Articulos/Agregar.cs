@@ -54,9 +54,9 @@ namespace TP2.Forms
                 IdCategoria = (int)cmbCategoria.SelectedValue,
                 IdMarca = (int)cmbMarca.SelectedValue
             };
-
+            
             // Chequeamos que se haya podido grabar. Faltaría chequear posibles excepciones.
-            if (!Articulos.Grabar(articulo))
+            if (!Negocio.Articulos.Grabar(articulo))
             {
                 MessageBox.Show("No se ha podido grabar correctamente el Articulo", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
