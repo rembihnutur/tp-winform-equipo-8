@@ -171,7 +171,6 @@ namespace TP2.Forms
             {
                 articulosFiltrados = articulos;
             }
-            dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = articulosFiltrados;
             ocultarColumna();
         }
