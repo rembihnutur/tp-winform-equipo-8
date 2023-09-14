@@ -38,13 +38,18 @@
             IdCategoria = new DataGridViewTextBoxColumn();
             Marca = new DataGridViewTextBoxColumn();
             IdMarca = new DataGridViewTextBoxColumn();
+            Imagenes = new DataGridViewTextBoxColumn();
             btnGrabarNuevo = new Button();
-            pictureBox1 = new PictureBox();
+            picImagen = new PictureBox();
+            btnNavIzq = new Button();
+            btnNavDer = new Button();
+            pnlNavegacion = new Panel();
             lblFiltro = new Label();
             txtFiltro = new TextBox();
             cboCampo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
+            pnlNavegacion.SuspendLayout();
             SuspendLayout();
             // 
             // lblTituloProductos
@@ -63,14 +68,14 @@
             dgvArticulos.AllowUserToDeleteRows = false;
             dgvArticulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca });
-            dgvArticulos.Location = new Point(12, 145);
+            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes });
+            dgvArticulos.Location = new Point(5, 60);
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
             dgvArticulos.RowTemplate.Height = 25;
-            dgvArticulos.Size = new Size(585, 269);
+            dgvArticulos.Size = new Size(454, 409);
             dgvArticulos.TabIndex = 1;
-            dgvArticulos.CellContentClick += dgvArticulos_CellContentClick;
+            dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
             // 
             // Id
             // 
@@ -131,28 +136,71 @@
             IdMarca.ReadOnly = true;
             IdMarca.Visible = false;
             // 
+            // Imagenes
+            // 
+            Imagenes.DataPropertyName = "Imagenes";
+            Imagenes.HeaderText = "Imagenes";
+            Imagenes.Name = "Imagenes";
+            Imagenes.ReadOnly = true;
+            Imagenes.Visible = false;
+            // 
             // btnGrabarNuevo
             // 
-            btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnGrabarNuevo.Location = new Point(652, 26);
+            btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGrabarNuevo.Location = new Point(655, 12);
             btnGrabarNuevo.Name = "btnGrabarNuevo";
             btnGrabarNuevo.Size = new Size(136, 39);
             btnGrabarNuevo.TabIndex = 2;
             btnGrabarNuevo.Text = "AGREGAR NUEVO";
             btnGrabarNuevo.UseVisualStyleBackColor = true;
+            btnGrabarNuevo.Click += btnGrabarNuevo_Click;
             // 
-            // pictureBox1
+            // picImagen
             // 
-            pictureBox1.Location = new Point(644, 197);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(144, 135);
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            picImagen.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picImagen.BorderStyle = BorderStyle.Fixed3D;
+            picImagen.Location = new Point(465, 60);
+            picImagen.Name = "picImagen";
+            picImagen.Size = new Size(326, 343);
+            picImagen.TabIndex = 3;
+            picImagen.TabStop = false;
+            // 
+            // btnNavIzq
+            // 
+            btnNavIzq.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNavIzq.Location = new Point(119, 4);
+            btnNavIzq.Name = "btnNavIzq";
+            btnNavIzq.Size = new Size(37, 35);
+            btnNavIzq.TabIndex = 4;
+            btnNavIzq.Text = "<";
+            btnNavIzq.UseVisualStyleBackColor = true;
+            btnNavIzq.Click += btnNavIzq_Click;
+            // 
+            // btnNavDer
+            // 
+            btnNavDer.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNavDer.Location = new Point(171, 4);
+            btnNavDer.Name = "btnNavDer";
+            btnNavDer.Size = new Size(37, 35);
+            btnNavDer.TabIndex = 5;
+            btnNavDer.Text = ">";
+            btnNavDer.UseVisualStyleBackColor = true;
+            btnNavDer.Click += btnNavDer_Click;
+            // 
+            // pnlNavegacion
+            // 
+            pnlNavegacion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pnlNavegacion.Controls.Add(btnNavIzq);
+            pnlNavegacion.Controls.Add(btnNavDer);
+            pnlNavegacion.Location = new Point(465, 409);
+            pnlNavegacion.Name = "pnlNavegacion";
+            pnlNavegacion.Size = new Size(326, 43);
+            pnlNavegacion.TabIndex = 6;
             // 
             // lblFiltro
             // 
             lblFiltro.AutoSize = true;
-            lblFiltro.Location = new Point(32, 70);
+            lblFiltro.Location = new Point(165, 22);
             lblFiltro.Name = "lblFiltro";
             lblFiltro.Size = new Size(34, 15);
             lblFiltro.TabIndex = 4;
@@ -160,7 +208,7 @@
             // 
             // txtFiltro
             // 
-            txtFiltro.Location = new Point(230, 66);
+            txtFiltro.Location = new Point(363, 18);
             txtFiltro.Name = "txtFiltro";
             txtFiltro.Size = new Size(194, 23);
             txtFiltro.TabIndex = 5;
@@ -170,7 +218,7 @@
             // 
             cboCampo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCampo.FormattingEnabled = true;
-            cboCampo.Location = new Point(86, 66);
+            cboCampo.Location = new Point(219, 18);
             cboCampo.Name = "cboCampo";
             cboCampo.Size = new Size(121, 23);
             cboCampo.TabIndex = 7;
@@ -179,18 +227,20 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 474);
+            Controls.Add(pnlNavegacion);
+            Controls.Add(picImagen);
             Controls.Add(cboCampo);
             Controls.Add(txtFiltro);
             Controls.Add(lblFiltro);
-            Controls.Add(pictureBox1);
             Controls.Add(btnGrabarNuevo);
             Controls.Add(dgvArticulos);
             Controls.Add(lblTituloProductos);
             Name = "Lista";
             Load += FormListaProductos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picImagen).EndInit();
+            pnlNavegacion.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,6 +249,8 @@
 
         private Label lblTituloProductos;
         private DataGridView dgvArticulos;
+        private Button btnGrabarNuevo;
+        private PictureBox picImagen;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;
@@ -207,8 +259,10 @@
         private DataGridViewTextBoxColumn IdCategoria;
         private DataGridViewTextBoxColumn Marca;
         private DataGridViewTextBoxColumn IdMarca;
-        private Button btnGrabarNuevo;
-        private PictureBox pictureBox1;
+        private DataGridViewTextBoxColumn Imagenes;
+        private Button btnNavIzq;
+        private Button btnNavDer;
+        private Panel pnlNavegacion;
         private Label lblFiltro;
         private TextBox txtFiltro;
         private ComboBox cboCampo;

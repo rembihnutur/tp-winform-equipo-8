@@ -11,7 +11,7 @@ namespace Negocio
             AccesoDatos acceso = new AccesoDatos();
             List<Articulo> articulos = new List<Articulo>();
 
-            var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a INNER JOIN Categorias c ON c.Id = a.IdCategoria INNER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
+            var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a LEFT OUTER JOIN Categorias c ON c.Id = a.IdCategoria LEFT OUTER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
 
             while (lector.Read())
             {
@@ -21,11 +21,11 @@ namespace Negocio
                     Codigo = (string)lector["Codigo"],
                     Nombre = (string)lector["Nombre"],
                     Descripcion = (string)lector["Descripcion"],
-                    IdCategoria = (int)lector["IdCategoria"],
-                    Categoria = (string)lector["Categoria"],
-                    Marca = (string)lector["Marca"],
-                    IdMarca = (int)lector["IdMarca"],
-                    Imagenes = new List<Imagen>(),
+                    IdCategoria = lector["IdCategoria"] != DBNull.Value ? (int)lector["IdCategoria"] : -1,
+                    Categoria = lector["Categoria"] != DBNull.Value ? (string)lector["Categoria"] : "",
+                    Marca = lector["Marca"] != DBNull.Value ? (string)lector["Marca"] : "",
+                    IdMarca = lector["IdMarca"] != DBNull.Value ? (int)lector["IdMarca"] : -1,
+                    Imagenes = Imagenes.ByArticuloId((int)lector["Id"]),
                 };
 
                 articulos.Add(aux);
@@ -34,24 +34,12 @@ namespace Negocio
             return articulos;
         }
 
-        public static List<Imagen> Imagenes(int id)
+        public static bool Existe(string codigo)
         {
             AccesoDatos acceso = new AccesoDatos();
-            var lector = acceso.Leer("SELECT Url FROM Imagenes WHERE IdArticulo = " + id);
-            List<Imagen> imagenes = new List<Imagen>();
+            var lector = acceso.Leer("SELECT Id FROM Articulos WHERE Codigo = '" + codigo + "'");
 
-            while (lector.Read())
-            {
-                Imagen img = new Imagen()
-                {
-                    IdArticulo = id,
-                    Url = (string)lector["Url"],
-                };
-
-                imagenes.Add(img);
-            }
-
-            return imagenes;
+            return lector.Read();
         }
 
         public static bool Grabar(Articulo articulo)

@@ -13,37 +13,32 @@ namespace Negocio
         private readonly SqlConnection conn;
         private readonly SqlCommand cmd;
 
-
-        public AccesoDatos() {
-
-                conn = new SqlConnection("Server=.\\SQLExpress;Database=CATALOGO_P3_DB;Trusted_Connection=True;");
-                cmd = new SqlCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-            
+        public AccesoDatos()
+        {
+            conn = new SqlConnection("Server=.\\SQLExpress;Database=CATALOGO_P3_DB;Trusted_Connection=True;");
+            cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;   
         }
 
         private void Preparar(string consulta)
         {
-                if (conn.State == ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
+            {
+                try
                 {
-                    try
-                    {
-                        conn.Open();
-                        cmd.Connection = conn;
-                        cmd.CommandText = consulta;
-                    }
-                    catch (SqlException ex)
-                    {
-                        throw;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw;
-                    }
-
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = consulta;
                 }
-            
-            
+                catch (SqlException)
+                {
+                    throw;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
 
         public SqlDataReader Leer(string consulta) 
