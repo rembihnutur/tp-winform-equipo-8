@@ -1,4 +1,5 @@
 ﻿using dominio;
+using System.Data.SqlTypes;
 
 namespace Negocio
 {
@@ -7,31 +8,35 @@ namespace Negocio
 
         public static List<Articulo> Listar()
         {
+            
 
-            AccesoDatos acceso = new AccesoDatos();
-            List<Articulo> articulos = new List<Articulo>();
+                AccesoDatos acceso = new AccesoDatos();
+                List<Articulo> articulos = new List<Articulo>();
 
-            var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a LEFT OUTER JOIN Categorias c ON c.Id = a.IdCategoria LEFT OUTER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
+                var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a LEFT OUTER JOIN Categorias c ON c.Id = a.IdCategoria LEFT OUTER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
 
-            while (lector.Read())
-            {
-                Articulo aux = new Articulo
+                while (lector.Read())
                 {
-                    Id = (int)lector["Id"],
-                    Codigo = (string)lector["Codigo"],
-                    Nombre = (string)lector["Nombre"],
-                    Descripcion = (string)lector["Descripcion"],
-                    IdCategoria = lector["IdCategoria"] != DBNull.Value ? (int)lector["IdCategoria"] : -1,
-                    Categoria = lector["Categoria"] != DBNull.Value ? (string)lector["Categoria"] : "",
-                    Marca = lector["Marca"] != DBNull.Value ? (string)lector["Marca"] : "",
-                    IdMarca = lector["IdMarca"] != DBNull.Value ? (int)lector["IdMarca"] : -1,
-                    Imagenes = Imagenes.ByArticuloId((int)lector["Id"]),
-                };
+                    Articulo aux = new Articulo
+                    {
+                        Id = (int)lector["Id"],
+                        Codigo = (string)lector["Codigo"],
+                        Nombre = (string)lector["Nombre"],
+                        Descripcion = (string)lector["Descripcion"],
+                        Precio = Convert.ToDouble(lector["Precio"]),                    
+                        IdCategoria = lector["IdCategoria"] != DBNull.Value ? (int)lector["IdCategoria"] : -1,
+                        Categoria = lector["Categoria"] != DBNull.Value ? (string)lector["Categoria"] : "",
+                        Marca = lector["Marca"] != DBNull.Value ? (string)lector["Marca"] : "",
+                        IdMarca = lector["IdMarca"] != DBNull.Value ? (int)lector["IdMarca"] : -1,
+                        Imagenes = Imagenes.ByArticuloId((int)lector["Id"]),
+                    };
 
-                articulos.Add(aux);
-            }
+                    articulos.Add(aux);
+                }
 
-            return articulos;
+                return articulos;
+            
+           
         }
 
         public static bool Existe(string codigo)

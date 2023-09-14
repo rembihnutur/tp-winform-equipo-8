@@ -30,15 +30,6 @@
         {
             lblTituloProductos = new Label();
             dgvArticulos = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Categoria = new DataGridViewTextBoxColumn();
-            IdCategoria = new DataGridViewTextBoxColumn();
-            Marca = new DataGridViewTextBoxColumn();
-            IdMarca = new DataGridViewTextBoxColumn();
-            Imagenes = new DataGridViewTextBoxColumn();
             btnGrabarNuevo = new Button();
             picImagen = new PictureBox();
             btnNavIzq = new Button();
@@ -47,6 +38,16 @@
             lblFiltro = new Label();
             txtFiltro = new TextBox();
             cboCampo = new ComboBox();
+            Id = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            IdCategoria = new DataGridViewTextBoxColumn();
+            Marca = new DataGridViewTextBoxColumn();
+            IdMarca = new DataGridViewTextBoxColumn();
+            Imagenes = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
@@ -68,7 +69,7 @@
             dgvArticulos.AllowUserToDeleteRows = false;
             dgvArticulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes });
+            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, Precio, IdCategoria, Marca, IdMarca, Imagenes });
             dgvArticulos.Location = new Point(5, 60);
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
@@ -76,73 +77,6 @@
             dgvArticulos.Size = new Size(454, 409);
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // Codigo
-            // 
-            Codigo.DataPropertyName = "Codigo";
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            // 
-            // IdCategoria
-            // 
-            IdCategoria.DataPropertyName = "IdCategoria";
-            IdCategoria.HeaderText = "IdCategoria";
-            IdCategoria.Name = "IdCategoria";
-            IdCategoria.ReadOnly = true;
-            IdCategoria.Visible = false;
-            // 
-            // Marca
-            // 
-            Marca.DataPropertyName = "Marca";
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            Marca.ReadOnly = true;
-            // 
-            // IdMarca
-            // 
-            IdMarca.DataPropertyName = "IdMarca";
-            IdMarca.HeaderText = "IdMarca";
-            IdMarca.Name = "IdMarca";
-            IdMarca.ReadOnly = true;
-            IdMarca.Visible = false;
-            // 
-            // Imagenes
-            // 
-            Imagenes.DataPropertyName = "Imagenes";
-            Imagenes.HeaderText = "Imagenes";
-            Imagenes.Name = "Imagenes";
-            Imagenes.ReadOnly = true;
-            Imagenes.Visible = false;
             // 
             // btnGrabarNuevo
             // 
@@ -223,6 +157,85 @@
             cboCampo.Size = new Size(121, 23);
             cboCampo.TabIndex = 7;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 5;
+            // 
+            // Codigo
+            // 
+            Codigo.DataPropertyName = "Codigo";
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            Codigo.Width = 50;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 70;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            Categoria.Width = 70;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 65;
+            // 
+            // IdCategoria
+            // 
+            IdCategoria.DataPropertyName = "IdCategoria";
+            IdCategoria.HeaderText = "IdCategoria";
+            IdCategoria.Name = "IdCategoria";
+            IdCategoria.ReadOnly = true;
+            IdCategoria.Visible = false;
+            // 
+            // Marca
+            // 
+            Marca.DataPropertyName = "Marca";
+            Marca.HeaderText = "Marca";
+            Marca.Name = "Marca";
+            Marca.ReadOnly = true;
+            Marca.Width = 70;
+            // 
+            // IdMarca
+            // 
+            IdMarca.DataPropertyName = "IdMarca";
+            IdMarca.HeaderText = "IdMarca";
+            IdMarca.Name = "IdMarca";
+            IdMarca.ReadOnly = true;
+            IdMarca.Visible = false;
+            // 
+            // Imagenes
+            // 
+            Imagenes.DataPropertyName = "Imagenes";
+            Imagenes.HeaderText = "Imagenes";
+            Imagenes.Name = "Imagenes";
+            Imagenes.ReadOnly = true;
+            Imagenes.Visible = false;
+            // 
             // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -251,20 +264,21 @@
         private DataGridView dgvArticulos;
         private Button btnGrabarNuevo;
         private PictureBox picImagen;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Categoria;
-        private DataGridViewTextBoxColumn IdCategoria;
-        private DataGridViewTextBoxColumn Marca;
-        private DataGridViewTextBoxColumn IdMarca;
-        private DataGridViewTextBoxColumn Imagenes;
         private Button btnNavIzq;
         private Button btnNavDer;
         private Panel pnlNavegacion;
         private Label lblFiltro;
         private TextBox txtFiltro;
         private ComboBox cboCampo;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn IdCategoria;
+        private DataGridViewTextBoxColumn Marca;
+        private DataGridViewTextBoxColumn IdMarca;
+        private DataGridViewTextBoxColumn Imagenes;
     }
 }

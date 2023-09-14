@@ -21,7 +21,7 @@ namespace TP2.Forms
 
         private void FormListaProductos_Load(object sender, EventArgs e)
         {
-            articulos = Articulos.Listar();
+            articulos = Negocio.Articulos.Listar();
             dgvArticulos.Rows.Clear();
             pnlNavegacion.Visible = false;
 
@@ -32,7 +32,7 @@ namespace TP2.Forms
             cboCampo.Items.Add("Codigo");
         }
 
-        private void cargar()
+        public void cargar()
         {
             try
             {
@@ -41,6 +41,7 @@ namespace TP2.Forms
 
                 foreach (var articulo in articulos)
                 {
+                    string precioFormateado = articulo.Precio.ToString("N3");
                     int row = dgvArticulos.Rows.Add();
                     dgvArticulos.Rows[row].Cells["Id"].Value = articulo.Id;
                     dgvArticulos.Columns["Id"].Visible = false;
@@ -48,6 +49,7 @@ namespace TP2.Forms
                     dgvArticulos.Rows[row].Cells["Nombre"].Value = articulo.Nombre;
                     dgvArticulos.Rows[row].Cells["Descripcion"].Value = articulo.Descripcion;
                     dgvArticulos.Rows[row].Cells["Categoria"].Value = articulo.Categoria;
+                    dgvArticulos.Rows[row].Cells["Precio"].Value = precioFormateado;
                     dgvArticulos.Rows[row].Cells["IdCategoria"].Value = articulo.IdCategoria;
                     dgvArticulos.Rows[row].Cells["Marca"].Value = articulo.Marca;
                     dgvArticulos.Rows[row].Cells["IdMarca"].Value = articulo.IdMarca;

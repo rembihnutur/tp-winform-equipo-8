@@ -2,6 +2,7 @@
 using Negocio;
 
 namespace TP2.Forms
+
 {
     public partial class Agregar : Form
     {
@@ -38,7 +39,7 @@ namespace TP2.Forms
             }
 
             // Evitamos duplicado de articulos
-            if (Articulos.Existe(txtCodigo.Text))
+            if (Negocio.Articulos.Existe(txtCodigo.Text))
             {
                 MessageBox.Show("Ya existe un Articulo con este Código", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
@@ -83,7 +84,7 @@ namespace TP2.Forms
             {
                 if (txtCodigo.Text.Trim().Length == 0) return;
 
-                if (Articulos.Existe(txtCodigo.Text))
+                if (Negocio.Articulos.Existe(txtCodigo.Text))
                 {
                     MessageBox.Show("Ya existe un Articulo con este Código", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;

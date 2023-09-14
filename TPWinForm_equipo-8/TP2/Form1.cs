@@ -52,7 +52,7 @@ namespace TP2
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.Articulos.Buscar(), sender);
+            AbrirForm(new Forms.Articulos.Buscar());
         }
     }
 }
