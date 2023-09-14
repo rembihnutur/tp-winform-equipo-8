@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblListaCategorias = new Label();
             dgvListaCategorias = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -54,12 +57,46 @@
             // 
             // dgvListaCategorias
             // 
+            dgvListaCategorias.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvListaCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListaCategorias.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvListaCategorias.BackgroundColor = SystemColors.Control;
+            dgvListaCategorias.BorderStyle = BorderStyle.None;
+            dgvListaCategorias.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvListaCategorias.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle1.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListaCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaCategorias.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion });
+            dgvListaCategorias.EnableHeadersVisualStyles = false;
+            dgvListaCategorias.GridColor = SystemColors.Control;
             dgvListaCategorias.Location = new Point(12, 110);
             dgvListaCategorias.Name = "dgvListaCategorias";
-            dgvListaCategorias.RowTemplate.Height = 25;
+            dgvListaCategorias.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvListaCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HotTrack;
+            dgvListaCategorias.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListaCategorias.RowTemplate.Height = 50;
             dgvListaCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvListaCategorias.ShowEditingIcon = false;
             dgvListaCategorias.Size = new Size(776, 328);
             dgvListaCategorias.TabIndex = 1;
             dgvListaCategorias.CellContentClick += dgvListaCategorias_CellContentClick;

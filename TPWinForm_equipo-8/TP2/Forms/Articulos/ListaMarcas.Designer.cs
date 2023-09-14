@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblListaMarcas = new Label();
             dgvListaMarcas = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -55,13 +58,46 @@
             // dgvListaMarcas
             // 
             dgvListaMarcas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvListaMarcas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListaMarcas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvListaMarcas.BackgroundColor = SystemColors.Control;
+            dgvListaMarcas.BorderStyle = BorderStyle.None;
+            dgvListaMarcas.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvListaMarcas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle1.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListaMarcas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaMarcas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaMarcas.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion });
-            dgvListaMarcas.Location = new Point(12, 65);
+            dgvListaMarcas.EnableHeadersVisualStyles = false;
+            dgvListaMarcas.GridColor = SystemColors.Control;
+            dgvListaMarcas.Location = new Point(0, 55);
             dgvListaMarcas.Name = "dgvListaMarcas";
-            dgvListaMarcas.RowTemplate.Height = 25;
+            dgvListaMarcas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvListaMarcas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HotTrack;
+            dgvListaMarcas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListaMarcas.RowTemplate.Height = 50;
             dgvListaMarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvListaMarcas.Size = new Size(776, 375);
+            dgvListaMarcas.ShowEditingIcon = false;
+            dgvListaMarcas.Size = new Size(800, 395);
             dgvListaMarcas.TabIndex = 1;
             dgvListaMarcas.CellContentClick += dgvListaMarcas_CellContentClick;
             // 

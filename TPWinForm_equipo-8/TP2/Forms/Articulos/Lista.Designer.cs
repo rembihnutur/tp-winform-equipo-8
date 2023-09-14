@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblTituloProductos = new Label();
             dgvArticulos = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -84,14 +87,46 @@
             dgvArticulos.AllowUserToAddRows = false;
             dgvArticulos.AllowUserToDeleteRows = false;
             dgvArticulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvArticulos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvArticulos.BackgroundColor = SystemColors.Control;
+            dgvArticulos.BorderStyle = BorderStyle.None;
+            dgvArticulos.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvArticulos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes, Precio });
+            dgvArticulos.EnableHeadersVisualStyles = false;
+            dgvArticulos.GridColor = SystemColors.Control;
             dgvArticulos.Location = new Point(5, 60);
             dgvArticulos.MultiSelect = false;
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
-            dgvArticulos.RowTemplate.Height = 25;
+            dgvArticulos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HotTrack;
+            dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvArticulos.RowTemplate.Height = 50;
             dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvArticulos.ShowEditingIcon = false;
             dgvArticulos.Size = new Size(454, 409);
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
@@ -102,6 +137,7 @@
             Id.HeaderText = "Id";
             Id.Name = "Id";
             Id.ReadOnly = true;
+            Id.Visible = false;
             // 
             // Codigo
             // 
@@ -399,6 +435,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(800, 474);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
@@ -445,16 +482,6 @@
         private Label lblFiltro;
         private TextBox txtFiltro;
         private ComboBox cboCampo;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Categoria;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn IdCategoria;
-        private DataGridViewTextBoxColumn Marca;
-        private DataGridViewTextBoxColumn IdMarca;
-        private DataGridViewTextBoxColumn Imagenes;
         private Button btnEditar;
         private TextBox tbCodigo;
         private Label lblCodigo;
@@ -470,5 +497,15 @@
         private ComboBox cbCategoria;
         private Button btnGuardar;
         private Button btnEliminar;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn IdCategoria;
+        private DataGridViewTextBoxColumn Marca;
+        private DataGridViewTextBoxColumn IdMarca;
+        private DataGridViewTextBoxColumn Imagenes;
+        private DataGridViewTextBoxColumn Precio;
     }
 }

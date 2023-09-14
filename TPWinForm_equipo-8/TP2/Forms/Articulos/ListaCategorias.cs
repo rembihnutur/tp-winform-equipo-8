@@ -12,7 +12,6 @@ namespace TP2.Forms
         {
             InitializeComponent();
             cargar();
-            dgvListaCategorias.Rows.Clear();
         }
 
         private void cargar()

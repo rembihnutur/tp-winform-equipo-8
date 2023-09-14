@@ -11,7 +11,6 @@ namespace TP2.Forms
         {
             InitializeComponent();
             cargar();
-            dgvListaMarcas.Rows.Clear();
         }
 
         private void FormListaMarcas_Load(object sender, EventArgs e)
