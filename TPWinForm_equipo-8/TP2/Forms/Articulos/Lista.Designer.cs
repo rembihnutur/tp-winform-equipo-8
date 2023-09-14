@@ -30,20 +30,11 @@
         {
             lblTituloProductos = new Label();
             dgvArticulos = new DataGridView();
-            btnGrabarNuevo = new Button();
-            picImagen = new PictureBox();
-            btnNavIzq = new Button();
-            btnNavDer = new Button();
-            pnlNavegacion = new Panel();
-            lblFiltro = new Label();
-            txtFiltro = new TextBox();
-            cboCampo = new ComboBox();
             Id = new DataGridViewTextBoxColumn();
             Codigo = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             IdCategoria = new DataGridViewTextBoxColumn();
             Marca = new DataGridViewTextBoxColumn();
             IdMarca = new DataGridViewTextBoxColumn();
@@ -71,6 +62,7 @@
             cbMarca = new ComboBox();
             cbCategoria = new ComboBox();
             btnGuardar = new Button();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
@@ -180,9 +172,9 @@
             // btnGrabarNuevo
             // 
             btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGrabarNuevo.Location = new Point(563, 15);
+            btnGrabarNuevo.Location = new Point(497, 15);
             btnGrabarNuevo.Name = "btnGrabarNuevo";
-            btnGrabarNuevo.Size = new Size(136, 39);
+            btnGrabarNuevo.Size = new Size(110, 39);
             btnGrabarNuevo.TabIndex = 2;
             btnGrabarNuevo.Text = "AGREGAR NUEVO";
             btnGrabarNuevo.UseVisualStyleBackColor = true;
@@ -244,7 +236,7 @@
             // 
             txtFiltro.Location = new Point(363, 18);
             txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(194, 23);
+            txtFiltro.Size = new Size(123, 23);
             txtFiltro.TabIndex = 5;
             txtFiltro.TextChanged += txtFiltro_TextChanged;
             // 
@@ -260,7 +252,7 @@
             // btnEditar
             // 
             btnEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditar.Location = new Point(705, 15);
+            btnEditar.Location = new Point(613, 15);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(86, 39);
             btnEditar.TabIndex = 8;
@@ -270,7 +262,7 @@
             // 
             // tbCodigo
             // 
-            tbCodigo.Location = new Point(149, 57);
+            tbCodigo.Location = new Point(129, 57);
             tbCodigo.Name = "tbCodigo";
             tbCodigo.Size = new Size(100, 23);
             tbCodigo.TabIndex = 12;
@@ -288,7 +280,7 @@
             // 
             // tbNombre
             // 
-            tbNombre.Location = new Point(149, 86);
+            tbNombre.Location = new Point(129, 86);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(100, 23);
             tbNombre.TabIndex = 14;
@@ -306,7 +298,7 @@
             // 
             // tbDescripcion
             // 
-            tbDescripcion.Location = new Point(149, 115);
+            tbDescripcion.Location = new Point(129, 114);
             tbDescripcion.Multiline = true;
             tbDescripcion.Name = "tbDescripcion";
             tbDescripcion.Size = new Size(100, 100);
@@ -326,7 +318,7 @@
             // lblMarca
             // 
             lblMarca.AutoSize = true;
-            lblMarca.Location = new Point(300, 60);
+            lblMarca.Location = new Point(268, 60);
             lblMarca.Name = "lblMarca";
             lblMarca.Size = new Size(40, 15);
             lblMarca.TabIndex = 17;
@@ -336,7 +328,7 @@
             // lblCategoria
             // 
             lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(300, 89);
+            lblCategoria.Location = new Point(268, 89);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(58, 15);
             lblCategoria.TabIndex = 19;
@@ -346,7 +338,7 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(300, 118);
+            lblPrecio.Location = new Point(268, 118);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(40, 15);
             lblPrecio.TabIndex = 20;
@@ -355,7 +347,7 @@
             // 
             // nudPrecio
             // 
-            nudPrecio.Location = new Point(397, 115);
+            nudPrecio.Location = new Point(365, 115);
             nudPrecio.Name = "nudPrecio";
             nudPrecio.Size = new Size(120, 23);
             nudPrecio.TabIndex = 21;
@@ -364,7 +356,7 @@
             // cbMarca
             // 
             cbMarca.FormattingEnabled = true;
-            cbMarca.Location = new Point(397, 52);
+            cbMarca.Location = new Point(365, 52);
             cbMarca.Name = "cbMarca";
             cbMarca.Size = new Size(121, 23);
             cbMarca.TabIndex = 23;
@@ -373,7 +365,7 @@
             // cbCategoria
             // 
             cbCategoria.FormattingEnabled = true;
-            cbCategoria.Location = new Point(397, 86);
+            cbCategoria.Location = new Point(365, 86);
             cbCategoria.Name = "cbCategoria";
             cbCategoria.Size = new Size(121, 23);
             cbCategoria.TabIndex = 24;
@@ -392,11 +384,23 @@
             btnGuardar.Visible = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // btnEliminar
+            // 
+            btnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEliminar.Location = new Point(705, 15);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(86, 39);
+            btnEliminar.TabIndex = 39;
+            btnEliminar.Text = "ELIMINAR";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
             // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 474);
+            Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(cbCategoria);
             Controls.Add(cbMarca);
@@ -465,5 +469,6 @@
         private ComboBox cbMarca;
         private ComboBox cbCategoria;
         private Button btnGuardar;
+        private Button btnEliminar;
     }
 }

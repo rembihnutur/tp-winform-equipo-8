@@ -33,5 +33,13 @@ namespace Negocio
             string query = string.Format("INSERT INTO Categorias (Descripcion) VALUES ('{0}')", categoria.Descripcion);
             return acceso.Ejecutar(query) > 0;
         }
+
+        public static bool Editar(Categoria categoria)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+
+            string query = string.Format("UPDATE Categorias SET Descripcion='" + categoria.Descripcion + "' WHERE Id='" + categoria.Id + "'");
+            return acceso.Ejecutar(query) > 0;
+        }
     }
 }

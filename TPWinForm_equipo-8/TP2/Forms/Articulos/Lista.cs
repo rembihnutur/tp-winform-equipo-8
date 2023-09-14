@@ -1,5 +1,6 @@
 ﻿using dominio;
 using Negocio;
+using System.Data.SqlClient;
 
 namespace TP2.Forms
 {
@@ -232,12 +233,12 @@ namespace TP2.Forms
 
             marcas = Marcas.Listar();
             cbMarca.DataSource = marcas;
-            cbMarca.ValueMember = "Descripcion";
+            cbMarca.ValueMember = "Id";
             cbMarca.DisplayMember = "Descripcion";
 
             categorias = Categorias.Listar();
             cbCategoria.DataSource = categorias;
-            cbCategoria.ValueMember = "Descripcion";
+            cbCategoria.ValueMember = "Id";
             cbCategoria.DisplayMember = "Descripcion";
 
             if (dgvArticulos.SelectedRows.Count > 0)
@@ -269,11 +270,11 @@ namespace TP2.Forms
             articulo.Descripcion = tbDescripcion.Text;
             articulo.Categoria = (string)cbCategoria.Text;
             articulo.Marca = (string)cbMarca.Text;
-            articulo.IdMarca = (int)dgvArticulos.SelectedRows[0].Cells["IdMarca"].Value;
-            articulo.IdCategoria = (int)dgvArticulos.SelectedRows[0].Cells["IdCategoria"].Value;
+            articulo.IdMarca = Convert.ToInt32(cbMarca.SelectedValue);
+            articulo.IdCategoria = Convert.ToInt32(cbCategoria.SelectedValue);
             articulo.Precio = (decimal)nudPrecio.Value;
             Negocio.Articulos.Editar(articulo);
-            
+
             MessageBox.Show("Articulo editado exitosamente:\n" +
                             "Nombre: " + articulo.Nombre +
                             "\nDescripcion: " + articulo.Descripcion);
@@ -282,6 +283,36 @@ namespace TP2.Forms
             cargar();
             dgvArticulos.Update();
             dgvArticulos.Refresh();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.SelectedRows.Count > 0)
+            {
+                DialogResult resultado = MessageBox.Show("Esta seguro que desea eliminar el articulo " + dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString() + "?", "Eliminar articulo", MessageBoxButtons.YesNo);
+                switch (resultado)
+                {
+                    case DialogResult.Yes:
+                        try
+                        {
+                            // Aca va la funcion de eliminar.
+                            MessageBox.Show("Eliminado.");
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show("No se pudo eliminar el registro. Error: " + ex.ToString());
+                        }
+                        break;
+                    case DialogResult.No:
+                        break;
+                }
+
+            }
+
+            else if (dgvArticulos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un articulo.");
+            }
         }
     }
 }
