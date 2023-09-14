@@ -48,9 +48,33 @@
             Marca = new DataGridViewTextBoxColumn();
             IdMarca = new DataGridViewTextBoxColumn();
             Imagenes = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            btnGrabarNuevo = new Button();
+            picImagen = new PictureBox();
+            btnNavIzq = new Button();
+            btnNavDer = new Button();
+            pnlNavegacion = new Panel();
+            lblFiltro = new Label();
+            txtFiltro = new TextBox();
+            cboCampo = new ComboBox();
+            btnEditar = new Button();
+            tbCodigo = new TextBox();
+            lblCodigo = new Label();
+            tbNombre = new TextBox();
+            lblNombre = new Label();
+            tbDescripcion = new TextBox();
+            lblDescripcion = new Label();
+            lblMarca = new Label();
+            lblCategoria = new Label();
+            lblPrecio = new Label();
+            nudPrecio = new NumericUpDown();
+            cbMarca = new ComboBox();
+            cbCategoria = new ComboBox();
+            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudPrecio).BeginInit();
             SuspendLayout();
             // 
             // lblTituloProductos
@@ -69,19 +93,94 @@
             dgvArticulos.AllowUserToDeleteRows = false;
             dgvArticulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, Precio, IdCategoria, Marca, IdMarca, Imagenes });
+            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes, Precio });
             dgvArticulos.Location = new Point(5, 60);
+            dgvArticulos.MultiSelect = false;
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
             dgvArticulos.RowTemplate.Height = 25;
+            dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvArticulos.Size = new Size(454, 409);
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // Codigo
+            // 
+            Codigo.DataPropertyName = "Codigo";
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // IdCategoria
+            // 
+            IdCategoria.DataPropertyName = "IdCategoria";
+            IdCategoria.HeaderText = "IdCategoria";
+            IdCategoria.Name = "IdCategoria";
+            IdCategoria.ReadOnly = true;
+            IdCategoria.Visible = false;
+            // 
+            // Marca
+            // 
+            Marca.DataPropertyName = "Marca";
+            Marca.HeaderText = "Marca";
+            Marca.Name = "Marca";
+            Marca.ReadOnly = true;
+            // 
+            // IdMarca
+            // 
+            IdMarca.DataPropertyName = "IdMarca";
+            IdMarca.HeaderText = "IdMarca";
+            IdMarca.Name = "IdMarca";
+            IdMarca.ReadOnly = true;
+            IdMarca.Visible = false;
+            // 
+            // Imagenes
+            // 
+            Imagenes.DataPropertyName = "Imagenes";
+            Imagenes.HeaderText = "Imagenes";
+            Imagenes.Name = "Imagenes";
+            Imagenes.ReadOnly = true;
+            Imagenes.Visible = false;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
             // btnGrabarNuevo
             // 
             btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGrabarNuevo.Location = new Point(655, 12);
+            btnGrabarNuevo.Location = new Point(563, 15);
             btnGrabarNuevo.Name = "btnGrabarNuevo";
             btnGrabarNuevo.Size = new Size(136, 39);
             btnGrabarNuevo.TabIndex = 2;
@@ -98,6 +197,7 @@
             picImagen.Size = new Size(326, 343);
             picImagen.TabIndex = 3;
             picImagen.TabStop = false;
+            picImagen.Click += picImagen_Click;
             // 
             // btnNavIzq
             // 
@@ -157,90 +257,160 @@
             cboCampo.Size = new Size(121, 23);
             cboCampo.TabIndex = 7;
             // 
-            // Id
+            // btnEditar
             // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Width = 5;
+            btnEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEditar.Location = new Point(705, 15);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(86, 39);
+            btnEditar.TabIndex = 8;
+            btnEditar.Text = "EDITAR";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
-            // Codigo
+            // tbCodigo
             // 
-            Codigo.DataPropertyName = "Codigo";
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            Codigo.Width = 50;
+            tbCodigo.Location = new Point(149, 57);
+            tbCodigo.Name = "tbCodigo";
+            tbCodigo.Size = new Size(100, 23);
+            tbCodigo.TabIndex = 12;
+            tbCodigo.Visible = false;
             // 
-            // Nombre
+            // lblCodigo
             // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 70;
+            lblCodigo.AutoSize = true;
+            lblCodigo.Location = new Point(16, 60);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(46, 15);
+            lblCodigo.TabIndex = 11;
+            lblCodigo.Text = "Codigo";
+            lblCodigo.Visible = false;
             // 
-            // Descripcion
+            // tbNombre
             // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
+            tbNombre.Location = new Point(149, 86);
+            tbNombre.Name = "tbNombre";
+            tbNombre.Size = new Size(100, 23);
+            tbNombre.TabIndex = 14;
+            tbNombre.Visible = false;
             // 
-            // Categoria
+            // lblNombre
             // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            Categoria.Width = 70;
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(16, 89);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(51, 15);
+            lblNombre.TabIndex = 13;
+            lblNombre.Text = "Nombre";
+            lblNombre.Visible = false;
             // 
-            // Precio
+            // tbDescripcion
             // 
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 65;
+            tbDescripcion.Location = new Point(149, 115);
+            tbDescripcion.Multiline = true;
+            tbDescripcion.Name = "tbDescripcion";
+            tbDescripcion.Size = new Size(100, 100);
+            tbDescripcion.TabIndex = 16;
+            tbDescripcion.Visible = false;
             // 
-            // IdCategoria
+            // lblDescripcion
             // 
-            IdCategoria.DataPropertyName = "IdCategoria";
-            IdCategoria.HeaderText = "IdCategoria";
-            IdCategoria.Name = "IdCategoria";
-            IdCategoria.ReadOnly = true;
-            IdCategoria.Visible = false;
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Location = new Point(16, 118);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new Size(69, 15);
+            lblDescripcion.TabIndex = 15;
+            lblDescripcion.Text = "Descripcion";
+            lblDescripcion.Visible = false;
             // 
-            // Marca
+            // lblMarca
             // 
-            Marca.DataPropertyName = "Marca";
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            Marca.ReadOnly = true;
-            Marca.Width = 70;
+            lblMarca.AutoSize = true;
+            lblMarca.Location = new Point(300, 60);
+            lblMarca.Name = "lblMarca";
+            lblMarca.Size = new Size(40, 15);
+            lblMarca.TabIndex = 17;
+            lblMarca.Text = "Marca";
+            lblMarca.Visible = false;
             // 
-            // IdMarca
+            // lblCategoria
             // 
-            IdMarca.DataPropertyName = "IdMarca";
-            IdMarca.HeaderText = "IdMarca";
-            IdMarca.Name = "IdMarca";
-            IdMarca.ReadOnly = true;
-            IdMarca.Visible = false;
+            lblCategoria.AutoSize = true;
+            lblCategoria.Location = new Point(300, 89);
+            lblCategoria.Name = "lblCategoria";
+            lblCategoria.Size = new Size(58, 15);
+            lblCategoria.TabIndex = 19;
+            lblCategoria.Text = "Categoria";
+            lblCategoria.Visible = false;
             // 
-            // Imagenes
+            // lblPrecio
             // 
-            Imagenes.DataPropertyName = "Imagenes";
-            Imagenes.HeaderText = "Imagenes";
-            Imagenes.Name = "Imagenes";
-            Imagenes.ReadOnly = true;
-            Imagenes.Visible = false;
+            lblPrecio.AutoSize = true;
+            lblPrecio.Location = new Point(300, 118);
+            lblPrecio.Name = "lblPrecio";
+            lblPrecio.Size = new Size(40, 15);
+            lblPrecio.TabIndex = 20;
+            lblPrecio.Text = "Precio";
+            lblPrecio.Visible = false;
+            // 
+            // nudPrecio
+            // 
+            nudPrecio.Location = new Point(397, 115);
+            nudPrecio.Name = "nudPrecio";
+            nudPrecio.Size = new Size(120, 23);
+            nudPrecio.TabIndex = 21;
+            nudPrecio.Visible = false;
+            // 
+            // cbMarca
+            // 
+            cbMarca.FormattingEnabled = true;
+            cbMarca.Location = new Point(397, 52);
+            cbMarca.Name = "cbMarca";
+            cbMarca.Size = new Size(121, 23);
+            cbMarca.TabIndex = 23;
+            cbMarca.Visible = false;
+            // 
+            // cbCategoria
+            // 
+            cbCategoria.FormattingEnabled = true;
+            cbCategoria.Location = new Point(397, 86);
+            cbCategoria.Name = "cbCategoria";
+            cbCategoria.Size = new Size(121, 23);
+            cbCategoria.TabIndex = 24;
+            cbCategoria.Visible = false;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGuardar.Location = new Point(12, 221);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(86, 39);
+            btnGuardar.TabIndex = 25;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.TextAlign = ContentAlignment.MiddleLeft;
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Visible = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 474);
+            Controls.Add(btnGuardar);
+            Controls.Add(cbCategoria);
+            Controls.Add(cbMarca);
+            Controls.Add(nudPrecio);
+            Controls.Add(lblPrecio);
+            Controls.Add(lblCategoria);
+            Controls.Add(lblMarca);
+            Controls.Add(tbDescripcion);
+            Controls.Add(lblDescripcion);
+            Controls.Add(tbNombre);
+            Controls.Add(lblNombre);
+            Controls.Add(tbCodigo);
+            Controls.Add(lblCodigo);
+            Controls.Add(btnEditar);
             Controls.Add(pnlNavegacion);
             Controls.Add(picImagen);
             Controls.Add(cboCampo);
@@ -254,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).EndInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).EndInit();
             pnlNavegacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nudPrecio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -280,5 +451,19 @@
         private DataGridViewTextBoxColumn Marca;
         private DataGridViewTextBoxColumn IdMarca;
         private DataGridViewTextBoxColumn Imagenes;
+        private Button btnEditar;
+        private TextBox tbCodigo;
+        private Label lblCodigo;
+        private TextBox tbNombre;
+        private Label lblNombre;
+        private TextBox tbDescripcion;
+        private Label lblDescripcion;
+        private Label lblMarca;
+        private Label lblCategoria;
+        private Label lblPrecio;
+        private NumericUpDown nudPrecio;
+        private ComboBox cbMarca;
+        private ComboBox cbCategoria;
+        private Button btnGuardar;
     }
 }

@@ -6,6 +6,8 @@ namespace TP2.Forms
     public partial class Lista : Form
     {
         private List<Articulo> articulos;
+        private List<Marca> marcas;
+        private List<Categoria> categorias;
 
         private string[] imgs;
 
@@ -14,6 +16,7 @@ namespace TP2.Forms
         public Lista()
         {
             InitializeComponent();
+
             articulos = new List<Articulo>();
             imgs = Array.Empty<string>();
             idxImg = 0;
@@ -26,6 +29,7 @@ namespace TP2.Forms
             pnlNavegacion.Visible = false;
 
             cargar();
+            dgvArticulos.ClearSelection();
             ocultarColumna();
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Descripcion");
@@ -53,6 +57,7 @@ namespace TP2.Forms
                     dgvArticulos.Rows[row].Cells["IdCategoria"].Value = articulo.IdCategoria;
                     dgvArticulos.Rows[row].Cells["Marca"].Value = articulo.Marca;
                     dgvArticulos.Rows[row].Cells["IdMarca"].Value = articulo.IdMarca;
+                    dgvArticulos.Rows[row].Cells["Precio"].Value = articulo.Precio;
                     dgvArticulos.Rows[row].Cells["Imagenes"].Value = articulo.Imagenes.Aggregate("", (p, n) => $"{p};{n.Url}").TrimStart(';');
                 }
             }
@@ -180,6 +185,103 @@ namespace TP2.Forms
         private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void mostrarEditar()
+        {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblDescripcion.Visible = true;
+            lblMarca.Visible = true;
+            lblCategoria.Visible = true;
+            lblPrecio.Visible = true;
+            tbCodigo.Visible = true;
+            tbNombre.Visible = true;
+            tbDescripcion.Visible = true;
+            cbCategoria.Visible = true;
+            cbMarca.Visible = true;
+            nudPrecio.Visible = true;
+            btnGuardar.Visible = true;
+
+            dgvArticulos.Top = 250;
+            picImagen.Top = 250;
+        }
+
+        private void ocultarEditar()
+        {
+            lblCodigo.Visible = false;
+            lblNombre.Visible = false;
+            lblDescripcion.Visible = false;
+            lblMarca.Visible = false;
+            lblCategoria.Visible = false;
+            lblPrecio.Visible = false;
+            tbCodigo.Visible = false;
+            tbNombre.Visible = false;
+            tbDescripcion.Visible = false;
+            cbCategoria.Visible = false;
+            cbMarca.Visible = false;
+            nudPrecio.Visible = false;
+            btnGuardar.Visible = false;
+
+            dgvArticulos.Top = 60;
+            picImagen.Top = 60;
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            mostrarEditar();
+
+            marcas = Marcas.Listar();
+            cbMarca.DataSource = marcas;
+            cbMarca.ValueMember = "Descripcion";
+            cbMarca.DisplayMember = "Descripcion";
+
+            categorias = Categorias.Listar();
+            cbCategoria.DataSource = categorias;
+            cbCategoria.ValueMember = "Descripcion";
+            cbCategoria.DisplayMember = "Descripcion";
+
+            if (dgvArticulos.SelectedRows.Count > 0)
+            {
+                tbCodigo.Text = dgvArticulos.SelectedRows[0].Cells["Codigo"].Value.ToString();
+                tbNombre.Text = dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString();
+                tbDescripcion.Text = dgvArticulos.SelectedRows[0].Cells["Descripcion"].Value.ToString();
+                nudPrecio.Text = dgvArticulos.SelectedRows[0].Cells["Precio"].Value.ToString();
+            }
+
+            else if (dgvArticulos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un articulo.");
+            }
+        }
+
+        private void picImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+            Articulo articulo = new Articulo();
+            articulo.Id = (int)dgvArticulos.SelectedRows[0].Cells["Id"].Value;
+            articulo.Codigo = tbCodigo.Text;
+            articulo.Nombre = tbNombre.Text;
+            articulo.Descripcion = tbDescripcion.Text;
+            articulo.Categoria = (string)cbCategoria.Text;
+            articulo.Marca = (string)cbMarca.Text;
+            articulo.IdMarca = (int)dgvArticulos.SelectedRows[0].Cells["IdMarca"].Value;
+            articulo.IdCategoria = (int)dgvArticulos.SelectedRows[0].Cells["IdCategoria"].Value;
+            articulo.Precio = (decimal)nudPrecio.Value;
+            Negocio.Articulos.Editar(articulo);
+            
+            MessageBox.Show("Articulo editado exitosamente:\n" +
+                            "Nombre: " + articulo.Nombre +
+                            "\nDescripcion: " + articulo.Descripcion);
+
+            ocultarEditar();
+            cargar();
+            dgvArticulos.Update();
+            dgvArticulos.Refresh();
         }
     }
 }

@@ -16,7 +16,8 @@ namespace dominio
         public string Marca { get; set; }
         public int IdMarca { get; set; }
         public int IdCategoria { get; set; }
-        public double Precio { get; set; }
-        public List<Imagen> Imagenes { get; set; } 
+        public decimal Precio { get; set; }
+        public List<Imagen> Imagenes { get; set; }
+
     }
 }

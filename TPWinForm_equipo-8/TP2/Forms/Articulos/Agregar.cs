@@ -51,7 +51,7 @@ namespace TP2.Forms
                 Codigo = txtCodigo.Text,
                 Nombre = txtNombre.Text,
                 Descripcion = txtDescripcion.Text,
-                Precio = double.Parse(txtPrecio.Text),
+                Precio = decimal.Parse(txtPrecio.Text),
                 IdCategoria = (int)cmbCategoria.SelectedValue,
                 IdMarca = (int)cmbMarca.SelectedValue
             };
