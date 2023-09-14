@@ -102,6 +102,7 @@
             btnBuscar.TextAlign = ContentAlignment.MiddleLeft;
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.UseWaitCursor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnLista
             // 

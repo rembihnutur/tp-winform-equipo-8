@@ -49,5 +49,10 @@ namespace TP2
         {
             AbrirForm(new Forms.ListaCategorias());
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Forms.Articulos.Buscar(), sender);
+        }
     }
 }
