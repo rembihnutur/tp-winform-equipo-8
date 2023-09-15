@@ -28,140 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvBuscarArticulos = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Categoria = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            IdCategoria = new DataGridViewTextBoxColumn();
-            Marca = new DataGridViewTextBoxColumn();
-            IdMarca = new DataGridViewTextBoxColumn();
-            Imagenes = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvBuscarArticulos).BeginInit();
+            lblFiltro = new Label();
+            txtFiltro = new TextBox();
+            lblCampo = new Label();
+            cboCampo = new ComboBox();
+            lblCriterio = new Label();
+            cboCriterio = new ComboBox();
+            btnBuscar = new Button();
+            txtFiltro2 = new TextBox();
+            lblY = new Label();
             SuspendLayout();
             // 
-            // dgvBuscarArticulos
+            // lblFiltro
             // 
-            dgvBuscarArticulos.AllowUserToAddRows = false;
-            dgvBuscarArticulos.AllowUserToDeleteRows = false;
-            dgvBuscarArticulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvBuscarArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBuscarArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, Precio, IdCategoria, Marca, IdMarca, Imagenes });
-            dgvBuscarArticulos.Location = new Point(25, 129);
-            dgvBuscarArticulos.Name = "dgvBuscarArticulos";
-            dgvBuscarArticulos.ReadOnly = true;
-            dgvBuscarArticulos.RowTemplate.Height = 25;
-            dgvBuscarArticulos.Size = new Size(562, 298);
-            dgvBuscarArticulos.TabIndex = 2;
-            dgvBuscarArticulos.CellContentClick += dgvBuscarArticulos_CellContentClick;
+            lblFiltro.AutoSize = true;
+            lblFiltro.Location = new Point(426, 52);
+            lblFiltro.Name = "lblFiltro";
+            lblFiltro.Size = new Size(34, 15);
+            lblFiltro.TabIndex = 3;
+            lblFiltro.Text = "Entre";
             // 
-            // Id
+            // txtFiltro
             // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Width = 10;
+            txtFiltro.Enabled = false;
+            txtFiltro.Location = new Point(465, 48);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(100, 23);
+            txtFiltro.TabIndex = 4;
             // 
-            // Codigo
+            // lblCampo
             // 
-            Codigo.DataPropertyName = "Codigo";
-            Codigo.FillWeight = 20F;
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            Codigo.Width = 50;
+            lblCampo.AutoSize = true;
+            lblCampo.Location = new Point(24, 52);
+            lblCampo.Name = "lblCampo";
+            lblCampo.Size = new Size(46, 15);
+            lblCampo.TabIndex = 5;
+            lblCampo.Text = "Campo";
             // 
-            // Nombre
+            // cboCampo
             // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 70;
+            cboCampo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCampo.FormattingEnabled = true;
+            cboCampo.Location = new Point(74, 48);
+            cboCampo.Name = "cboCampo";
+            cboCampo.Size = new Size(121, 23);
+            cboCampo.TabIndex = 6;
+            cboCampo.SelectedIndexChanged += cboCampo_SelectedIndexChanged;
             // 
-            // Descripcion
+            // lblCriterio
             // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
+            lblCriterio.AutoSize = true;
+            lblCriterio.Location = new Point(215, 52);
+            lblCriterio.Name = "lblCriterio";
+            lblCriterio.Size = new Size(46, 15);
+            lblCriterio.TabIndex = 7;
+            lblCriterio.Text = "Criterio";
             // 
-            // Categoria
+            // cboCriterio
             // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            Categoria.Width = 70;
+            cboCriterio.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCriterio.FormattingEnabled = true;
+            cboCriterio.Location = new Point(263, 48);
+            cboCriterio.Name = "cboCriterio";
+            cboCriterio.Size = new Size(121, 23);
+            cboCriterio.TabIndex = 8;
+            cboCriterio.SelectedIndexChanged += cboCriterio_SelectedIndexChanged;
             // 
-            // Precio
+            // btnBuscar
             // 
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 60;
+            btnBuscar.Location = new Point(335, 103);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(90, 36);
+            btnBuscar.TabIndex = 9;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // IdCategoria
+            // txtFiltro2
             // 
-            IdCategoria.DataPropertyName = "IdCategoria";
-            IdCategoria.HeaderText = "IdCategoria";
-            IdCategoria.Name = "IdCategoria";
-            IdCategoria.ReadOnly = true;
-            IdCategoria.Visible = false;
+            txtFiltro2.Enabled = false;
+            txtFiltro2.Location = new Point(598, 48);
+            txtFiltro2.Name = "txtFiltro2";
+            txtFiltro2.Size = new Size(100, 23);
+            txtFiltro2.TabIndex = 10;
             // 
-            // Marca
+            // lblY
             // 
-            Marca.DataPropertyName = "Marca";
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            Marca.ReadOnly = true;
-            Marca.Width = 70;
-            // 
-            // IdMarca
-            // 
-            IdMarca.DataPropertyName = "IdMarca";
-            IdMarca.HeaderText = "IdMarca";
-            IdMarca.Name = "IdMarca";
-            IdMarca.ReadOnly = true;
-            IdMarca.Visible = false;
-            // 
-            // Imagenes
-            // 
-            Imagenes.DataPropertyName = "Imagenes";
-            Imagenes.HeaderText = "Imagenes";
-            Imagenes.Name = "Imagenes";
-            Imagenes.ReadOnly = true;
-            Imagenes.Visible = false;
+            lblY.AutoSize = true;
+            lblY.Location = new Point(575, 52);
+            lblY.Name = "lblY";
+            lblY.Size = new Size(14, 15);
+            lblY.TabIndex = 11;
+            lblY.Text = "Y";
             // 
             // Buscar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dgvBuscarArticulos);
+            ClientSize = new Size(752, 185);
+            Controls.Add(lblY);
+            Controls.Add(txtFiltro2);
+            Controls.Add(btnBuscar);
+            Controls.Add(cboCriterio);
+            Controls.Add(lblCriterio);
+            Controls.Add(cboCampo);
+            Controls.Add(lblCampo);
+            Controls.Add(txtFiltro);
+            Controls.Add(lblFiltro);
+            MaximizeBox = false;
+            MaximumSize = new Size(768, 224);
+            MinimizeBox = false;
+            MinimumSize = new Size(768, 224);
             Name = "Buscar";
             Text = "Buscar";
             Load += Buscar_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvBuscarArticulos).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dgvBuscarArticulos;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Categoria;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn IdCategoria;
-        private DataGridViewTextBoxColumn Marca;
-        private DataGridViewTextBoxColumn IdMarca;
-        private DataGridViewTextBoxColumn Imagenes;
+        private Label lblFiltro;
+        private TextBox txtFiltro;
+        private Label lblCampo;
+        private ComboBox cboCampo;
+        private Label lblCriterio;
+        private ComboBox cboCriterio;
+        private Button btnBuscar;
+        private TextBox txtFiltro2;
+        private Label lblY;
     }
 }

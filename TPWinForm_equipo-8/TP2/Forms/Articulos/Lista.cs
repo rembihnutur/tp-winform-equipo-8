@@ -1,6 +1,7 @@
 ﻿using dominio;
 using Negocio;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TP2.Forms
 {
@@ -41,7 +42,7 @@ namespace TP2.Forms
         {
             try
             {
-                articulos = Negocio.Articulos.Listar();
+                //articulos = Negocio.Articulos.Listar();
                 dgvArticulos.Rows.Clear();
 
                 foreach (var articulo in articulos)
@@ -164,12 +165,6 @@ namespace TP2.Forms
         {
             List<Articulo> articulosFiltrados;
             string? campo = cboCampo.SelectedItem?.ToString();
-            if (campo == null)
-            {
-                txtFiltro.Text = "";
-                MessageBox.Show("Es obligatorio seleccionar algun campo");
-                return;
-            }
             string filtro = txtFiltro.Text;
             if (filtro.Length >= 2)
             {
@@ -286,7 +281,7 @@ namespace TP2.Forms
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
-        {
+        {           
             if (dgvArticulos.SelectedRows.Count > 0)
             {
                 DialogResult resultado = MessageBox.Show("Esta seguro que desea eliminar el articulo " + dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString() + "?", "Eliminar articulo", MessageBoxButtons.YesNo);
@@ -296,7 +291,10 @@ namespace TP2.Forms
                         try
                         {
                             // Aca va la funcion de eliminar.
+                            string idArticulo = dgvArticulos.SelectedRows[0].Cells["Id"].Value.ToString();
+                            Negocio.Articulos.Eliminar(idArticulo);
                             MessageBox.Show("Eliminado.");
+                            cargar();
                         }
                         catch (SqlException ex)
                         {
@@ -313,6 +311,34 @@ namespace TP2.Forms
             {
                 MessageBox.Show("Seleccione un articulo.");
             }
+        }
+
+        public void filtrosBusqueda(TP2.Forms.Articulos.Buscar parametros)
+        {
+            try
+            {
+                if (!parametros.busqueda) return;
+                string campo = parametros.campo, criterio = parametros.criterio, filtro1 = parametros.filtro, filtro2 = parametros.filtro2;
+                articulos = Negocio.Articulos.Filtrar(campo, criterio, filtro1, filtro2);
+                dgvArticulos.DataSource = articulos;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtFiltro.Enabled = true;
+        }
+
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            txtFiltro.Clear();
+            cboCampo.SelectedItem = null;
         }
     }
 }

@@ -49,8 +49,16 @@ namespace Negocio
 
         public int Ejecutar(string consulta)
         {
-            Preparar(consulta);
-            return cmd.ExecuteNonQuery();
+            try
+            {
+                Preparar(consulta);
+                return cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void Close()

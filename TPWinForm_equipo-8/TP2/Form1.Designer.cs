@@ -88,6 +88,7 @@
             // 
             // btnBuscar
             // 
+            btnBuscar.Cursor = Cursors.Hand;
             btnBuscar.Dock = DockStyle.Top;
             btnBuscar.FlatAppearance.BorderSize = 0;
             btnBuscar.FlatStyle = FlatStyle.Flat;

@@ -1,6 +1,7 @@
 using dominio;
 using Negocio;
 using TP2.Forms;
+using TP2.Forms.Articulos;
 
 namespace TP2
 {
@@ -8,6 +9,7 @@ namespace TP2
     {
 
         private Form? formActivo;
+        private Lista lista = new Forms.Lista();
 
         public Form1()
         {
@@ -30,9 +32,13 @@ namespace TP2
             lblInicio.Text = childForm.Text;
         }
 
+
         private void btnLista_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.Lista());
+            btnBuscar.Enabled = true;
+            lista = new Forms.Lista();
+            AbrirForm(lista);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,17 +48,21 @@ namespace TP2
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
+            btnBuscar.Enabled = false;
             AbrirForm(new Forms.ListaMarcas());
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
+            btnBuscar.Enabled = false;
             AbrirForm(new Forms.ListaCategorias());
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Forms.Articulos.Buscar());
+            Buscar buscar = new Buscar();
+            buscar.ShowDialog();
+            lista.filtrosBusqueda(buscar);
         }
     }
 }

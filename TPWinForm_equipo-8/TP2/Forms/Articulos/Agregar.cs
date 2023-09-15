@@ -53,9 +53,8 @@ namespace TP2.Forms
                 Descripcion = txtDescripcion.Text,
                 Precio = decimal.Parse(txtPrecio.Text),
                 IdCategoria = (int)cmbCategoria.SelectedValue,
-                IdMarca = (int)cmbMarca.SelectedValue
+                IdMarca = (int)cmbMarca.SelectedValue,
             };
-            
             // Chequeamos que se haya podido grabar. Faltaría chequear posibles excepciones.
             if (!Negocio.Articulos.Grabar(articulo))
             {

@@ -105,7 +105,7 @@
             dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes, Precio });
             dgvArticulos.EnableHeadersVisualStyles = false;
             dgvArticulos.GridColor = SystemColors.Control;
-            dgvArticulos.Location = new Point(5, 60);
+            dgvArticulos.Location = new Point(5, 59);
             dgvArticulos.MultiSelect = false;
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
@@ -127,7 +127,7 @@
             dgvArticulos.RowTemplate.Height = 50;
             dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvArticulos.ShowEditingIcon = false;
-            dgvArticulos.Size = new Size(454, 409);
+            dgvArticulos.Size = new Size(593, 398);
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
             // 
@@ -208,7 +208,7 @@
             // btnGrabarNuevo
             // 
             btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGrabarNuevo.Location = new Point(497, 15);
+            btnGrabarNuevo.Location = new Point(636, 15);
             btnGrabarNuevo.Name = "btnGrabarNuevo";
             btnGrabarNuevo.Size = new Size(110, 39);
             btnGrabarNuevo.TabIndex = 2;
@@ -220,7 +220,7 @@
             // 
             picImagen.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picImagen.BorderStyle = BorderStyle.Fixed3D;
-            picImagen.Location = new Point(465, 60);
+            picImagen.Location = new Point(604, 59);
             picImagen.Name = "picImagen";
             picImagen.Size = new Size(326, 343);
             picImagen.TabIndex = 3;
@@ -254,7 +254,7 @@
             pnlNavegacion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlNavegacion.Controls.Add(btnNavIzq);
             pnlNavegacion.Controls.Add(btnNavDer);
-            pnlNavegacion.Location = new Point(465, 409);
+            pnlNavegacion.Location = new Point(604, 408);
             pnlNavegacion.Name = "pnlNavegacion";
             pnlNavegacion.Size = new Size(326, 43);
             pnlNavegacion.TabIndex = 6;
@@ -270,11 +270,13 @@
             // 
             // txtFiltro
             // 
+            txtFiltro.Enabled = false;
             txtFiltro.Location = new Point(363, 18);
             txtFiltro.Name = "txtFiltro";
             txtFiltro.Size = new Size(123, 23);
             txtFiltro.TabIndex = 5;
             txtFiltro.TextChanged += txtFiltro_TextChanged;
+            txtFiltro.Leave += txtFiltro_Leave;
             // 
             // cboCampo
             // 
@@ -284,11 +286,12 @@
             cboCampo.Name = "cboCampo";
             cboCampo.Size = new Size(121, 23);
             cboCampo.TabIndex = 7;
+            cboCampo.SelectedIndexChanged += cboCampo_SelectedIndexChanged;
             // 
             // btnEditar
             // 
             btnEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditar.Location = new Point(613, 15);
+            btnEditar.Location = new Point(752, 15);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(86, 39);
             btnEditar.TabIndex = 8;
@@ -410,7 +413,7 @@
             // btnGuardar
             // 
             btnGuardar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGuardar.Location = new Point(12, 221);
+            btnGuardar.Location = new Point(151, 221);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(86, 39);
             btnGuardar.TabIndex = 25;
@@ -423,7 +426,7 @@
             // btnEliminar
             // 
             btnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEliminar.Location = new Point(705, 15);
+            btnEliminar.Location = new Point(844, 15);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(86, 39);
             btnEliminar.TabIndex = 39;
@@ -436,7 +439,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(800, 474);
+            ClientSize = new Size(939, 463);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(cbCategoria);
