@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblTituloAgregar = new Label();
             lblAgregarCodigoProducto = new Label();
             txtCodigo = new TextBox();
@@ -42,7 +45,13 @@
             lblAgregarPrecio = new Label();
             btnAgregar = new Button();
             txtPrecio = new NumericUpDown();
+            button1 = new Button();
+            dgvArticulos = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Imagen = new DataGridViewImageColumn();
+            Ruta = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)txtPrecio).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             SuspendLayout();
             // 
             // lblTituloAgregar
@@ -108,6 +117,7 @@
             // 
             // cmbMarca
             // 
+            cmbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMarca.FormattingEnabled = true;
             cmbMarca.Location = new Point(130, 117);
             cmbMarca.Name = "cmbMarca";
@@ -117,6 +127,7 @@
             // 
             // cmbCategoria
             // 
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategoria.FormattingEnabled = true;
             cmbCategoria.Location = new Point(447, 117);
             cmbCategoria.Name = "cmbCategoria";
@@ -154,7 +165,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(239, 199);
+            btnAgregar.Location = new Point(422, 373);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(230, 50);
             btnAgregar.TabIndex = 13;
@@ -171,12 +182,98 @@
             txtPrecio.TabIndex = 15;
             txtPrecio.TextAlign = HorizontalAlignment.Right;
             // 
+            // button1
+            // 
+            button1.Location = new Point(423, 157);
+            button1.Name = "button1";
+            button1.Size = new Size(230, 26);
+            button1.TabIndex = 13;
+            button1.Text = "AGREGAR IMAGEN";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // dgvArticulos
+            // 
+            dgvArticulos.AllowUserToAddRows = false;
+            dgvArticulos.AllowUserToDeleteRows = false;
+            dgvArticulos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvArticulos.BackgroundColor = SystemColors.Control;
+            dgvArticulos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Imagen, Ruta });
+            dgvArticulos.EnableHeadersVisualStyles = false;
+            dgvArticulos.GridColor = SystemColors.Control;
+            dgvArticulos.Location = new Point(13, 189);
+            dgvArticulos.MultiSelect = false;
+            dgvArticulos.Name = "dgvArticulos";
+            dgvArticulos.ReadOnly = true;
+            dgvArticulos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvArticulos.RowHeadersVisible = false;
+            dgvArticulos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HotTrack;
+            dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvArticulos.RowTemplate.Height = 25;
+            dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvArticulos.ShowEditingIcon = false;
+            dgvArticulos.Size = new Size(640, 178);
+            dgvArticulos.TabIndex = 16;
+            // 
+            // Id
+            // 
+            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // Imagen
+            // 
+            Imagen.DataPropertyName = "Imagen";
+            Imagen.HeaderText = "Imagen";
+            Imagen.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Imagen.Name = "Imagen";
+            Imagen.ReadOnly = true;
+            Imagen.Resizable = DataGridViewTriState.False;
+            Imagen.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Ruta
+            // 
+            Ruta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Ruta.DataPropertyName = "Ruta";
+            Ruta.HeaderText = "Ruta";
+            Ruta.Name = "Ruta";
+            Ruta.ReadOnly = true;
+            // 
             // Agregar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvArticulos);
             Controls.Add(txtPrecio);
+            Controls.Add(button1);
             Controls.Add(btnAgregar);
             Controls.Add(lblAgregarPrecio);
             Controls.Add(lblAgregarCategoria);
@@ -194,6 +291,7 @@
             Load += Agregar_Load;
             Shown += FormAgregar_Shown;
             ((System.ComponentModel.ISupportInitialize)txtPrecio).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvArticulos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +312,10 @@
         private Label lblAgregarPrecio;
         private Button btnAgregar;
         private NumericUpDown txtPrecio;
+        private Button button1;
+        private DataGridView dgvArticulos;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewImageColumn Imagen;
+        private DataGridViewTextBoxColumn Ruta;
     }
 }

@@ -61,6 +61,47 @@ namespace Negocio
             }
         }
 
+        
+        public int Ejecutar(List<string> consultas)
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                int ejecutados = 0;
+                
+                cmd.Connection = conn;
+                var trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+
+                foreach (var consulta in consultas)
+                {
+                    cmd.CommandText = consulta;
+                    cmd.ExecuteNonQuery();
+                    ejecutados++;
+                }
+
+                trans.Commit();
+
+                return ejecutados;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                this.Close();
+            }
+        }
+
         public void Close()
         {
             if (conn.State != ConnectionState.Closed)

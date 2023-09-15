@@ -1,11 +1,11 @@
 ﻿using dominio;
 using Negocio;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+using TP2.Interfaces;
 
 namespace TP2.Forms
 {
-    public partial class Lista : Form
+    public partial class Lista : Form, IAgregarImagen
     {
         private List<Articulo> articulos;
         private List<Marca> marcas;
@@ -26,8 +26,6 @@ namespace TP2.Forms
 
         private void FormListaProductos_Load(object sender, EventArgs e)
         {
-            articulos = Negocio.Articulos.Listar();
-            dgvArticulos.Rows.Clear();
             pnlNavegacion.Visible = false;
 
             cargar();
@@ -42,7 +40,7 @@ namespace TP2.Forms
         {
             try
             {
-                //articulos = Negocio.Articulos.Listar();
+                articulos = Negocio.Articulos.Listar();
                 dgvArticulos.Rows.Clear();
 
                 foreach (var articulo in articulos)
@@ -124,7 +122,11 @@ namespace TP2.Forms
         {
             try
             {
+                // Mostramos una barra de carga por si la conexion a internet no es muy buena y tarda mas de un par de segundos en cargarnos la imagen.
+                pnlCargaImagen.Visible = true;
+
                 picImagen.Load(imgs[idxImg]);
+
             }
             catch (Exception)
             {
@@ -138,6 +140,10 @@ namespace TP2.Forms
                     btnNavDer.PerformClick();
                 }
                 return;
+            }
+            finally
+            {
+                pnlCargaImagen.Visible = false;
             }
         }
         private void ocultarColumna()
@@ -165,6 +171,12 @@ namespace TP2.Forms
         {
             List<Articulo> articulosFiltrados;
             string? campo = cboCampo.SelectedItem?.ToString();
+            if (campo == null)
+            {
+                txtFiltro.Text = "";
+                MessageBox.Show("Es obligatorio seleccionar algun campo");
+                return;
+            }
             string filtro = txtFiltro.Text;
             if (filtro.Length >= 2)
             {
@@ -199,8 +211,13 @@ namespace TP2.Forms
             nudPrecio.Visible = true;
             btnGuardar.Visible = true;
 
-            dgvArticulos.Top = 250;
-            picImagen.Top = 250;
+            pnlCargaImagen.Visible = false;
+            pnlNavegacion.Visible = false;
+
+            dgvArticulos.Top = 400;
+            picImagen.Top = 400;
+
+            gbEditar.Visible = true;
         }
 
         private void ocultarEditar()
@@ -221,32 +238,54 @@ namespace TP2.Forms
 
             dgvArticulos.Top = 60;
             picImagen.Top = 60;
+            gbEditar.Visible = false;
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (dgvArticulos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un articulo.");
+                return;
+            }
+
             mostrarEditar();
 
             marcas = Marcas.Listar();
+            marcas.Append(new Marca() { });
             cbMarca.DataSource = marcas;
             cbMarca.ValueMember = "Id";
             cbMarca.DisplayMember = "Descripcion";
 
             categorias = Categorias.Listar();
+            categorias.Append(new Categoria() { });
             cbCategoria.DataSource = categorias;
             cbCategoria.ValueMember = "Id";
             cbCategoria.DisplayMember = "Descripcion";
 
-            if (dgvArticulos.SelectedRows.Count > 0)
-            {
-                tbCodigo.Text = dgvArticulos.SelectedRows[0].Cells["Codigo"].Value.ToString();
-                tbNombre.Text = dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString();
-                tbDescripcion.Text = dgvArticulos.SelectedRows[0].Cells["Descripcion"].Value.ToString();
-                nudPrecio.Text = dgvArticulos.SelectedRows[0].Cells["Precio"].Value.ToString();
-            }
+            dgvImagenes.Rows.Clear();
 
-            else if (dgvArticulos.SelectedRows.Count == 0)
+            tbCodigo.Text = dgvArticulos.SelectedRows[0].Cells["Codigo"].Value.ToString();
+            tbNombre.Text = dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString();
+            tbDescripcion.Text = dgvArticulos.SelectedRows[0].Cells["Descripcion"].Value.ToString();
+            nudPrecio.Text = dgvArticulos.SelectedRows[0].Cells["Precio"].Value.ToString();
+
+            cbCategoria.SelectedValue = (int)dgvArticulos.SelectedRows[0].Cells["IdCategoria"].Value;
+            cbMarca.SelectedValue = (int)dgvArticulos.SelectedRows[0].Cells["IdMarca"].Value;
+
+            var imgs = Negocio.Imagenes.ByArticuloId((int)dgvArticulos.SelectedRows[0].Cells["Id"].Value);
+            foreach (Imagen img in imgs)
             {
-                MessageBox.Show("Seleccione un articulo.");
+                try
+                {
+                    var pic = new PictureBox();
+                    pic.Load(img.Url);
+                    Image imagen = (Image)pic.Image;
+                    dgvImagenes.Rows.Add(img.Id, imagen, img.Url);
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
             }
         }
 
@@ -268,6 +307,16 @@ namespace TP2.Forms
             articulo.IdMarca = Convert.ToInt32(cbMarca.SelectedValue);
             articulo.IdCategoria = Convert.ToInt32(cbCategoria.SelectedValue);
             articulo.Precio = (decimal)nudPrecio.Value;
+            articulo.Imagenes = new List<Imagen> { };
+
+            foreach (DataGridViewRow fila in dgvImagenes.Rows)
+            {
+                articulo.Imagenes.Add(new Imagen
+                {
+                    Url = (string)fila.Cells["Ruta"].Value,
+                });
+            }
+
             Negocio.Articulos.Editar(articulo);
 
             MessageBox.Show("Articulo editado exitosamente:\n" +
@@ -281,7 +330,7 @@ namespace TP2.Forms
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
-        {           
+        {
             if (dgvArticulos.SelectedRows.Count > 0)
             {
                 DialogResult resultado = MessageBox.Show("Esta seguro que desea eliminar el articulo " + dgvArticulos.SelectedRows[0].Cells["Nombre"].Value.ToString() + "?", "Eliminar articulo", MessageBoxButtons.YesNo);
@@ -311,6 +360,31 @@ namespace TP2.Forms
             {
                 MessageBox.Show("Seleccione un articulo.");
             }
+        }
+
+        private void dgvImagenes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (MessageBox.Show("¿Desea eliminar la imagen?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                dgvImagenes.Rows.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new Forms.Articulos.AgregarImagen();
+            frm.Owner = this;
+            frm.Show();
+        }
+
+        public void AgregarImagen(PictureBox pic)
+        {
+            try
+            {
+                dgvImagenes.Rows.Add("", (Image)pic.Image, pic.ImageLocation);
+            }
+            catch (Exception) { }
         }
 
         public void filtrosBusqueda(TP2.Forms.Articulos.Buscar parametros)
