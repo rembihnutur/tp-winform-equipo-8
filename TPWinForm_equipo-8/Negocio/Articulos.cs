@@ -137,7 +137,7 @@ namespace Negocio
             }
         }
 
-        public static bool Eliminar(string id)
+        public static bool Eliminar(int id)
         {
             try
             {

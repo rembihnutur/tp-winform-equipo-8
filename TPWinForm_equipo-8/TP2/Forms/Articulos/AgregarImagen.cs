@@ -46,9 +46,9 @@ namespace TP2.Forms.Articulos
 
                     Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    MessageBox.Show("No es posible agregar este tipo de imagen");
                 }
                 finally
                 {

@@ -104,7 +104,6 @@ namespace TP2.Forms
             {
                 // Mostramos una barra de carga por si la conexion a internet no es muy buena y tarda mas de un par de segundos en cargarnos la imagen.
                 pnlCargaImagen.Visible = true;
-
                 picImagen.Load(imgs[idxImg].Url);
 
             }
@@ -171,6 +170,9 @@ namespace TP2.Forms
 
         private void mostrarEditar()
         {
+            btnEliminar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnGrabarNuevo.Enabled = false;
             lblCodigo.Visible = true;
             lblNombre.Visible = true;
             lblDescripcion.Visible = true;
@@ -196,6 +198,9 @@ namespace TP2.Forms
 
         private void ocultarEditar()
         {
+            btnEliminar.Enabled = true;
+            btnEditar.Enabled = true;
+            btnGrabarNuevo.Enabled = true;
             lblCodigo.Visible = false;
             lblNombre.Visible = false;
             lblDescripcion.Visible = false;
@@ -216,8 +221,10 @@ namespace TP2.Forms
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            btnEliminar.Enabled = false;
             if (dgvArticulos.SelectedRows.Count == 0)
             {
+                btnEliminar.Enabled = true;
                 MessageBox.Show("Seleccione un articulo.");
                 return;
             }
@@ -311,7 +318,7 @@ namespace TP2.Forms
                     try
                     {
                         // Aca va la funcion de eliminar.
-                        string idArticulo = (string)dgvArticulos.SelectedRows[0].Cells["Id"].Value;
+                        int idArticulo = (int)dgvArticulos.SelectedRows[0].Cells["Id"].Value;
                         Negocio.Articulos.Eliminar(idArticulo);
                         MessageBox.Show("Eliminado.");
                         cargar();
