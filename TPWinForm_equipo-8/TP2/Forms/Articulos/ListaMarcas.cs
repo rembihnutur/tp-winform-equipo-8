@@ -48,6 +48,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = true;
             tbDescripcion.Visible = true;
             btnGuardar.Visible = true;
+            btnEliminar.Enabled = false;
+            btnAgregar.Enabled = false;
 
             dgvListaMarcas.Top = 250;
         }
@@ -57,6 +59,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = false;
             tbDescripcion.Visible = false;
             btnGuardar.Visible = false;
+            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = true;
 
             dgvListaMarcas.Top = 65;
         }
@@ -75,6 +79,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = false;
             tbDescripcion.Visible = false;
             btnGuardarAgregar.Visible = false;
+            btnEliminar.Enabled = true;
+            btnEditar.Enabled = true;
 
             dgvListaMarcas.Top = 65;
         }
@@ -125,6 +131,8 @@ namespace TP2.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
             mostrarAgregar();
 
         }
@@ -139,8 +147,11 @@ namespace TP2.Forms
                     case DialogResult.Yes:
                         try
                         {
+                            int idMarca = (int)dgvListaMarcas.SelectedRows[0].Cells["Id"].Value;
                             // Aca va la funcion de eliminar.
+                            Negocio.Marcas.Eliminar(idMarca);
                             MessageBox.Show("Eliminado.");
+                            cargar();
                         }
                         catch (SqlException ex)
                         {

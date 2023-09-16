@@ -50,6 +50,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = true;
             tbDescripcion.Visible = true;
             btnGuardar.Visible = true;
+            btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
 
             dgvListaCategorias.Top = 250;
         }
@@ -59,6 +61,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = false;
             tbDescripcion.Visible = false;
             btnGuardar.Visible = false;
+            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = true;
 
             dgvListaCategorias.Top = 60;
         }
@@ -68,6 +72,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = true;
             tbDescripcion.Visible = true;
             btnGuardarAgregar.Visible = true;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
 
             dgvListaCategorias.Top = 250;
         }
@@ -77,6 +83,8 @@ namespace TP2.Forms
             lblDescripcion.Visible = false;
             tbDescripcion.Visible = false;
             btnGuardarAgregar.Visible = false;
+            btnEliminar.Enabled = true;
+            btnEditar.Enabled = true;
 
             dgvListaCategorias.Top = 60;
         }
@@ -141,8 +149,11 @@ namespace TP2.Forms
                     case DialogResult.Yes:
                         try
                         {
+                            int idCategoria = (int)dgvListaCategorias.SelectedRows[0].Cells["Id"].Value;
                             // Aca va la funcion de eliminar.
+                            Negocio.Categorias.Eliminar(idCategoria);
                             MessageBox.Show("Eliminado.");
+                            cargar();
                         }
                         catch (SqlException ex)
                         {

@@ -41,5 +41,19 @@ namespace Negocio
             string query = string.Format("UPDATE Categorias SET Descripcion='" + categoria.Descripcion + "' WHERE Id='" + categoria.Id + "'");
             return acceso.Ejecutar(query) > 0;
         }
+
+        public static bool Eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                string query = string.Format("delete from CATEGORIAS where id = " + id);
+                return datos.Ejecutar(query) > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

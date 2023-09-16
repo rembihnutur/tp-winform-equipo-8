@@ -40,6 +40,11 @@ namespace TP2
 
         }
 
+        public void desactivateBtnBuscar ()
+        {
+            btnBuscar.Enabled = false;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             btnLista.PerformClick();

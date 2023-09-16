@@ -215,8 +215,8 @@ namespace TP2.Forms
             nudPrecio.Visible = false;
             btnGuardar.Visible = false;
 
-            dgvArticulos.Top = 60;
-            picImagen.Top = 60;
+            dgvArticulos.Top = 100;
+            picImagen.Top = 100;
             gbEditar.Visible = false;
         }
         private void btnEditar_Click(object sender, EventArgs e)
@@ -229,6 +229,7 @@ namespace TP2.Forms
                 return;
             }
 
+            
             mostrarEditar();
 
             marcas = Marcas.Listar();
@@ -298,9 +299,9 @@ namespace TP2.Forms
                             "\nDescripcion: " + articulo.Descripcion);
 
             ocultarEditar();
-            cargar();
-            dgvArticulos.Update();
             dgvArticulos.Refresh();
+            dgvArticulos.Update();
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -367,6 +368,7 @@ namespace TP2.Forms
         {
             try
             {
+                dgvArticulos.DataSource = articulos;
                 if (!parametros.busqueda) return;
                 string campo = parametros.campo, criterio = parametros.criterio, filtro1 = parametros.filtro, filtro2 = parametros.filtro2;
                 articulos = Negocio.Articulos.Filtrar(campo, criterio, filtro1, filtro2);
