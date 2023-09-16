@@ -1,10 +1,12 @@
 ﻿using dominio;
 using Negocio;
+using TP2.Forms.Articulos;
+using TP2.Interfaces;
 
 namespace TP2.Forms
 
 {
-    public partial class Agregar : Form
+    public partial class Agregar : Form, IAgregarImagen
     {
         public Agregar()
         {
@@ -54,7 +56,17 @@ namespace TP2.Forms
                 Precio = decimal.Parse(txtPrecio.Text),
                 IdCategoria = (int)cmbCategoria.SelectedValue,
                 IdMarca = (int)cmbMarca.SelectedValue,
+                Imagenes = new List<Imagen> { }
             };
+
+            foreach (DataGridViewRow fila in dgvArticulos.Rows)
+            {
+                articulo.Imagenes.Add(new Imagen
+                {
+                    Url = (string)fila.Cells["Ruta"].Value,
+                });
+            }
+
             // Chequeamos que se haya podido grabar. Faltaría chequear posibles excepciones.
             if (!Negocio.Articulos.Grabar(articulo))
             {
@@ -145,6 +157,29 @@ namespace TP2.Forms
             cmbCategoria.DataSource = categorias;
             cmbCategoria.ValueMember = "Id";
             cmbCategoria.DisplayMember = "Descripcion";
+
+            // Sabemos que por lo menos una de cada una vamos a tener seguro (por el .append).
+            cmbMarca.SelectedIndex = 0;
+            cmbCategoria.SelectedIndex = 0;
+
+            txtPrecio.Maximum = decimal.MaxValue;
+            txtPrecio.Minimum = 0;
+        }
+
+        public void AgregarImagen(PictureBox pic)
+        {
+            try
+            {
+                dgvArticulos.Rows.Add("", (Image)pic.Image, pic.ImageLocation);
+            }
+            catch (Exception) { }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new AgregarImagen();
+            frm.Owner = this;
+            frm.Show();
         }
     }
 }

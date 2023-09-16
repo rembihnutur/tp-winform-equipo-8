@@ -29,20 +29,15 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblTituloProductos = new Label();
             dgvArticulos = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Categoria = new DataGridViewTextBoxColumn();
-            IdCategoria = new DataGridViewTextBoxColumn();
-            Marca = new DataGridViewTextBoxColumn();
-            IdMarca = new DataGridViewTextBoxColumn();
-            Imagenes = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             btnGrabarNuevo = new Button();
             picImagen = new PictureBox();
             btnNavIzq = new Button();
@@ -66,10 +61,32 @@
             cbCategoria = new ComboBox();
             btnGuardar = new Button();
             btnEliminar = new Button();
+            pnlCargaImagen = new Panel();
+            progressBar1 = new ProgressBar();
+            gbEditar = new GroupBox();
+            label1 = new Label();
+            dgvImagenes = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            Imagen = new DataGridViewImageColumn();
+            Ruta = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            Id = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            IdCategoria = new DataGridViewTextBoxColumn();
+            Marca = new DataGridViewTextBoxColumn();
+            IdMarca = new DataGridViewTextBoxColumn();
+            Imagenes = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudPrecio).BeginInit();
+            pnlCargaImagen.SuspendLayout();
+            gbEditar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvImagenes).BeginInit();
             SuspendLayout();
             // 
             // lblTituloProductos
@@ -105,105 +122,31 @@
             dgvArticulos.Columns.AddRange(new DataGridViewColumn[] { Id, Codigo, Nombre, Descripcion, Categoria, IdCategoria, Marca, IdMarca, Imagenes, Precio });
             dgvArticulos.EnableHeadersVisualStyles = false;
             dgvArticulos.GridColor = SystemColors.Control;
-            dgvArticulos.Location = new Point(5, 59);
+            dgvArticulos.Location = new Point(5, 60);
             dgvArticulos.MultiSelect = false;
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
             dgvArticulos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new Padding(0, 15, 0, 15);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HotTrack;
-            dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new Padding(0, 15, 0, 15);
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HotTrack;
+            dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvArticulos.RowTemplate.Height = 50;
             dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvArticulos.ShowEditingIcon = false;
-            dgvArticulos.Size = new Size(593, 398);
+            dgvArticulos.Size = new Size(593, 598);
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
-            // Codigo
-            // 
-            Codigo.DataPropertyName = "Codigo";
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            // 
-            // IdCategoria
-            // 
-            IdCategoria.DataPropertyName = "IdCategoria";
-            IdCategoria.HeaderText = "IdCategoria";
-            IdCategoria.Name = "IdCategoria";
-            IdCategoria.ReadOnly = true;
-            IdCategoria.Visible = false;
-            // 
-            // Marca
-            // 
-            Marca.DataPropertyName = "Marca";
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            Marca.ReadOnly = true;
-            // 
-            // IdMarca
-            // 
-            IdMarca.DataPropertyName = "IdMarca";
-            IdMarca.HeaderText = "IdMarca";
-            IdMarca.Name = "IdMarca";
-            IdMarca.ReadOnly = true;
-            IdMarca.Visible = false;
-            // 
-            // Imagenes
-            // 
-            Imagenes.DataPropertyName = "Imagenes";
-            Imagenes.HeaderText = "Imagenes";
-            Imagenes.Name = "Imagenes";
-            Imagenes.ReadOnly = true;
-            Imagenes.Visible = false;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
             // 
             // btnGrabarNuevo
             // 
@@ -219,10 +162,12 @@
             // picImagen
             // 
             picImagen.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picImagen.BackgroundImageLayout = ImageLayout.Zoom;
             picImagen.BorderStyle = BorderStyle.Fixed3D;
             picImagen.Location = new Point(604, 59);
             picImagen.Name = "picImagen";
             picImagen.Size = new Size(326, 343);
+            picImagen.SizeMode = PictureBoxSizeMode.Zoom;
             picImagen.TabIndex = 3;
             picImagen.TabStop = false;
             picImagen.Click += picImagen_Click;
@@ -301,7 +246,7 @@
             // 
             // tbCodigo
             // 
-            tbCodigo.Location = new Point(129, 57);
+            tbCodigo.Location = new Point(98, 20);
             tbCodigo.Name = "tbCodigo";
             tbCodigo.Size = new Size(100, 23);
             tbCodigo.TabIndex = 12;
@@ -310,7 +255,7 @@
             // lblCodigo
             // 
             lblCodigo.AutoSize = true;
-            lblCodigo.Location = new Point(16, 60);
+            lblCodigo.Location = new Point(46, 24);
             lblCodigo.Name = "lblCodigo";
             lblCodigo.Size = new Size(46, 15);
             lblCodigo.TabIndex = 11;
@@ -319,7 +264,7 @@
             // 
             // tbNombre
             // 
-            tbNombre.Location = new Point(129, 86);
+            tbNombre.Location = new Point(98, 49);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(100, 23);
             tbNombre.TabIndex = 14;
@@ -328,7 +273,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(16, 89);
+            lblNombre.Location = new Point(41, 53);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 13;
@@ -337,17 +282,17 @@
             // 
             // tbDescripcion
             // 
-            tbDescripcion.Location = new Point(129, 114);
+            tbDescripcion.Location = new Point(98, 78);
             tbDescripcion.Multiline = true;
             tbDescripcion.Name = "tbDescripcion";
-            tbDescripcion.Size = new Size(100, 100);
+            tbDescripcion.Size = new Size(357, 24);
             tbDescripcion.TabIndex = 16;
             tbDescripcion.Visible = false;
             // 
             // lblDescripcion
             // 
             lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(16, 118);
+            lblDescripcion.Location = new Point(23, 82);
             lblDescripcion.Name = "lblDescripcion";
             lblDescripcion.Size = new Size(69, 15);
             lblDescripcion.TabIndex = 15;
@@ -357,7 +302,7 @@
             // lblMarca
             // 
             lblMarca.AutoSize = true;
-            lblMarca.Location = new Point(268, 60);
+            lblMarca.Location = new Point(288, 24);
             lblMarca.Name = "lblMarca";
             lblMarca.Size = new Size(40, 15);
             lblMarca.TabIndex = 17;
@@ -367,7 +312,7 @@
             // lblCategoria
             // 
             lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(268, 89);
+            lblCategoria.Location = new Point(270, 53);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(58, 15);
             lblCategoria.TabIndex = 19;
@@ -377,7 +322,7 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(268, 118);
+            lblPrecio.Location = new Point(52, 111);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(40, 15);
             lblPrecio.TabIndex = 20;
@@ -386,16 +331,19 @@
             // 
             // nudPrecio
             // 
-            nudPrecio.Location = new Point(365, 115);
+            nudPrecio.DecimalPlaces = 2;
+            nudPrecio.Location = new Point(98, 108);
             nudPrecio.Name = "nudPrecio";
-            nudPrecio.Size = new Size(120, 23);
+            nudPrecio.Size = new Size(100, 23);
             nudPrecio.TabIndex = 21;
+            nudPrecio.TextAlign = HorizontalAlignment.Right;
             nudPrecio.Visible = false;
             // 
             // cbMarca
             // 
+            cbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMarca.FormattingEnabled = true;
-            cbMarca.Location = new Point(365, 52);
+            cbMarca.Location = new Point(334, 20);
             cbMarca.Name = "cbMarca";
             cbMarca.Size = new Size(121, 23);
             cbMarca.TabIndex = 23;
@@ -403,8 +351,9 @@
             // 
             // cbCategoria
             // 
+            cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCategoria.FormattingEnabled = true;
-            cbCategoria.Location = new Point(365, 86);
+            cbCategoria.Location = new Point(334, 49);
             cbCategoria.Name = "cbCategoria";
             cbCategoria.Size = new Size(121, 23);
             cbCategoria.TabIndex = 24;
@@ -413,12 +362,11 @@
             // btnGuardar
             // 
             btnGuardar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGuardar.Location = new Point(151, 221);
+            btnGuardar.Location = new Point(264, 296);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(86, 39);
+            btnGuardar.Size = new Size(217, 39);
             btnGuardar.TabIndex = 25;
             btnGuardar.Text = "GUARDAR";
-            btnGuardar.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Visible = false;
             btnGuardar.Click += btnGuardar_Click;
@@ -434,27 +382,236 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
+            // pnlCargaImagen
+            // 
+            pnlCargaImagen.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pnlCargaImagen.Controls.Add(progressBar1);
+            pnlCargaImagen.Location = new Point(604, 408);
+            pnlCargaImagen.Name = "pnlCargaImagen";
+            pnlCargaImagen.Size = new Size(326, 43);
+            pnlCargaImagen.TabIndex = 6;
+            pnlCargaImagen.Visible = false;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 8);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(302, 14);
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.TabIndex = 0;
+            // 
+            // gbEditar
+            // 
+            gbEditar.Controls.Add(label1);
+            gbEditar.Controls.Add(dgvImagenes);
+            gbEditar.Controls.Add(cbCategoria);
+            gbEditar.Controls.Add(btnGuardar);
+            gbEditar.Controls.Add(cbMarca);
+            gbEditar.Controls.Add(button1);
+            gbEditar.Controls.Add(nudPrecio);
+            gbEditar.Controls.Add(lblPrecio);
+            gbEditar.Controls.Add(lblCodigo);
+            gbEditar.Controls.Add(lblCategoria);
+            gbEditar.Controls.Add(tbCodigo);
+            gbEditar.Controls.Add(lblMarca);
+            gbEditar.Controls.Add(lblNombre);
+            gbEditar.Controls.Add(tbDescripcion);
+            gbEditar.Controls.Add(tbNombre);
+            gbEditar.Controls.Add(lblDescripcion);
+            gbEditar.Location = new Point(22, 15);
+            gbEditar.Name = "gbEditar";
+            gbEditar.Size = new Size(490, 344);
+            gbEditar.TabIndex = 40;
+            gbEditar.TabStop = false;
+            gbEditar.Text = "EDITAR ARTICULO";
+            gbEditar.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(9, 136);
+            label1.Name = "label1";
+            label1.Size = new Size(181, 12);
+            label1.TabIndex = 28;
+            label1.Text = "(*) Doble click para eliminar una imagen";
+            // 
+            // dgvImagenes
+            // 
+            dgvImagenes.AllowUserToAddRows = false;
+            dgvImagenes.AllowUserToDeleteRows = false;
+            dgvImagenes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvImagenes.BackgroundColor = SystemColors.Control;
+            dgvImagenes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle6.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle6.Padding = new Padding(0, 5, 0, 5);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HotTrack;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvImagenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dgvImagenes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvImagenes.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Imagen, Ruta });
+            dgvImagenes.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgvImagenes.EnableHeadersVisualStyles = false;
+            dgvImagenes.GridColor = SystemColors.Control;
+            dgvImagenes.Location = new Point(8, 151);
+            dgvImagenes.MultiSelect = false;
+            dgvImagenes.Name = "dgvImagenes";
+            dgvImagenes.ReadOnly = true;
+            dgvImagenes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvImagenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dgvImagenes.RowHeadersVisible = false;
+            dgvImagenes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle8.BackColor = SystemColors.Control;
+            dataGridViewCellStyle8.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HotTrack;
+            dgvImagenes.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dgvImagenes.RowTemplate.Height = 25;
+            dgvImagenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvImagenes.ShowEditingIcon = false;
+            dgvImagenes.Size = new Size(474, 137);
+            dgvImagenes.TabIndex = 27;
+            dgvImagenes.CellMouseDoubleClick += dgvImagenes_CellMouseDoubleClick;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn1.HeaderText = "Id";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // Imagen
+            // 
+            Imagen.DataPropertyName = "Imagen";
+            Imagen.HeaderText = "Imagen";
+            Imagen.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Imagen.Name = "Imagen";
+            Imagen.ReadOnly = true;
+            Imagen.Resizable = DataGridViewTriState.False;
+            Imagen.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Ruta
+            // 
+            Ruta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Ruta.DataPropertyName = "Ruta";
+            Ruta.HeaderText = "Ruta";
+            Ruta.Name = "Ruta";
+            Ruta.ReadOnly = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(348, 113);
+            button1.Name = "button1";
+            button1.Size = new Size(133, 34);
+            button1.TabIndex = 26;
+            button1.Text = "AGREGAR IMAGEN";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            Id.DefaultCellStyle = dataGridViewCellStyle2;
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // Codigo
+            // 
+            Codigo.DataPropertyName = "Codigo";
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // IdCategoria
+            // 
+            IdCategoria.DataPropertyName = "IdCategoria";
+            IdCategoria.HeaderText = "IdCategoria";
+            IdCategoria.Name = "IdCategoria";
+            IdCategoria.ReadOnly = true;
+            IdCategoria.Visible = false;
+            // 
+            // Marca
+            // 
+            Marca.DataPropertyName = "Marca";
+            Marca.HeaderText = "Marca";
+            Marca.Name = "Marca";
+            Marca.ReadOnly = true;
+            // 
+            // IdMarca
+            // 
+            IdMarca.DataPropertyName = "IdMarca";
+            IdMarca.HeaderText = "IdMarca";
+            IdMarca.Name = "IdMarca";
+            IdMarca.ReadOnly = true;
+            IdMarca.Visible = false;
+            // 
+            // Imagenes
+            // 
+            Imagenes.DataPropertyName = "Imagenes";
+            Imagenes.HeaderText = "Imagenes";
+            Imagenes.Name = "Imagenes";
+            Imagenes.ReadOnly = true;
+            Imagenes.Visible = false;
+            // 
+            // Precio
+            // 
+            Precio.DataPropertyName = "Precio";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0";
+            Precio.DefaultCellStyle = dataGridViewCellStyle3;
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
             // Lista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(939, 463);
+            ClientSize = new Size(939, 660);
+            Controls.Add(gbEditar);
             Controls.Add(btnEliminar);
-            Controls.Add(btnGuardar);
-            Controls.Add(cbCategoria);
-            Controls.Add(cbMarca);
-            Controls.Add(nudPrecio);
-            Controls.Add(lblPrecio);
-            Controls.Add(lblCategoria);
-            Controls.Add(lblMarca);
-            Controls.Add(tbDescripcion);
-            Controls.Add(lblDescripcion);
-            Controls.Add(tbNombre);
-            Controls.Add(lblNombre);
-            Controls.Add(tbCodigo);
-            Controls.Add(lblCodigo);
             Controls.Add(btnEditar);
+            Controls.Add(pnlCargaImagen);
             Controls.Add(pnlNavegacion);
             Controls.Add(picImagen);
             Controls.Add(cboCampo);
@@ -469,6 +626,10 @@
             ((System.ComponentModel.ISupportInitialize)picImagen).EndInit();
             pnlNavegacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudPrecio).EndInit();
+            pnlCargaImagen.ResumeLayout(false);
+            gbEditar.ResumeLayout(false);
+            gbEditar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvImagenes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -500,6 +661,15 @@
         private ComboBox cbCategoria;
         private Button btnGuardar;
         private Button btnEliminar;
+        private Panel pnlCargaImagen;
+        private ProgressBar progressBar1;
+        private GroupBox gbEditar;
+        private DataGridView dgvImagenes;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewImageColumn Imagen;
+        private DataGridViewTextBoxColumn Ruta;
+        private Button button1;
+        private Label label1;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;

@@ -9,10 +9,8 @@ namespace Negocio
 
         public static List<Articulo> Listar()
         {
-            
-
-                AccesoDatos acceso = new AccesoDatos();
-                List<Articulo> articulos = new List<Articulo>();
+            AccesoDatos acceso = new AccesoDatos();
+            List<Articulo> articulos = new List<Articulo>();
 
             var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a LEFT OUTER JOIN Categorias c ON c.Id = a.IdCategoria LEFT OUTER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
 
@@ -32,12 +30,10 @@ namespace Negocio
                     Imagenes = Imagenes.ByArticuloId((int)lector["Id"]),
                 };
 
-                    articulos.Add(aux);
-                }
+                articulos.Add(aux);
+            }
 
-                return articulos;
-            
-           
+            return articulos;
         }
 
         public static bool Existe(string codigo)
@@ -52,15 +48,33 @@ namespace Negocio
         {
             Console.WriteLine(articulo);
             AccesoDatos acceso = new AccesoDatos();
-            string query = string.Format("INSERT INTO Articulos (Codigo, Nombre, Descripcion, IdCategoria, IdMarca, Precio) VALUES ('{0}','{1}','{2}',{3},{4},{5})", articulo.Codigo, articulo.Nombre, articulo.Descripcion, articulo.IdCategoria, articulo.IdMarca, articulo.Precio);
+            
+            List<string> query = new List<string> { 
+                string.Format("INSERT INTO Articulos (Codigo, Nombre, Descripcion, IdCategoria, IdMarca, Precio) VALUES ('{0}','{1}','{2}',{3},{4},REPLACE(CAST({5} AS NVARCHAR), '.', ','))", articulo.Codigo, articulo.Nombre, articulo.Descripcion, articulo.IdCategoria, articulo.IdMarca, articulo.Precio.ToString().Replace(",", "."))
+            };
+
+            foreach (var imagen in articulo.Imagenes)
+            {
+                query.Add(string.Format("INSERT INTO Imagenes (IdArticulo, ImagenUrl) VALUES ((SELECT MAX(Id) FROM Articulos), '{0}')", imagen.Url));
+            }
+
             return acceso.Ejecutar(query) > 0;
         }
 
         public static bool Editar(Articulo articulo)
         {
             AccesoDatos acceso = new AccesoDatos();
-            
-            string query = string.Format("UPDATE Articulos SET Codigo='" + articulo.Codigo + "', Nombre='" + articulo.Nombre + "', Descripcion='" + articulo.Descripcion + "', IdCategoria='" + articulo.IdCategoria + "', IdMarca='" + articulo.IdMarca + "', Precio='" + articulo.Precio + "' WHERE Id='" + articulo.Id + "'");
+            List<string> query = new List<string>
+            {
+                string.Format("UPDATE Articulos SET Codigo='" + articulo.Codigo + "', Nombre='" + articulo.Nombre + "', Descripcion='" + articulo.Descripcion + "', IdCategoria='" + articulo.IdCategoria + "', IdMarca='" + articulo.IdMarca + "', Precio='" + articulo.Precio + "' WHERE Id='" + articulo.Id + "'"),
+                string.Format("DELETE FROM Imagenes WHERE IdArticulo = '{0}'", articulo.Id)
+            };
+
+            foreach (var imagen in articulo.Imagenes)
+            {
+                query.Add(string.Format("INSERT INTO Imagenes (IdArticulo, ImagenUrl) VALUES ({0}, '{1}')", articulo.Id, imagen.Url));
+            }
+
             return acceso.Ejecutar(query) > 0;
         }
 
