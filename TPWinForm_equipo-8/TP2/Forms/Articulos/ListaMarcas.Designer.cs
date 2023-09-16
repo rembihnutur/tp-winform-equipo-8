@@ -49,9 +49,10 @@
             // lblListaMarcas
             // 
             lblListaMarcas.AutoSize = true;
+            lblListaMarcas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             lblListaMarcas.Location = new Point(12, 9);
             lblListaMarcas.Name = "lblListaMarcas";
-            lblListaMarcas.Size = new Size(45, 15);
+            lblListaMarcas.Size = new Size(74, 28);
             lblListaMarcas.TabIndex = 0;
             lblListaMarcas.Text = "Marcas";
             // 

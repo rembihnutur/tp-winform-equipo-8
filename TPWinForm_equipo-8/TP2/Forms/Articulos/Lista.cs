@@ -139,7 +139,7 @@ namespace TP2.Forms
             {
                 return articulosFiltrados = articulos.FindAll(x => x.Descripcion.ToLower().Contains(filtro.ToLower()));
             }
-            
+
             return articulosFiltrados = articulos.FindAll(x => x.Codigo.ToLower().Contains(filtro.ToLower()));
         }
 
@@ -147,16 +147,16 @@ namespace TP2.Forms
         {
             List<Articulo> articulosFiltrados;
             string? campo = cboCampo.SelectedItem?.ToString();
-            
+
             if (campo == null)
             {
                 txtFiltro.Text = "";
                 MessageBox.Show("Es obligatorio seleccionar algun campo");
                 return;
             }
-            
+
             string filtro = txtFiltro.Text;
-            
+
             if (filtro.Length >= 2)
             {
                 articulosFiltrados = filtrarPorCampo(campo, filtro);
@@ -165,7 +165,7 @@ namespace TP2.Forms
             {
                 articulosFiltrados = articulos;
             }
-            
+
             dgvArticulos.DataSource = articulosFiltrados;
         }
 
@@ -350,7 +350,8 @@ namespace TP2.Forms
             {
                 dgvImagenes.Rows.Add("", (Image)pic.Image, pic.ImageLocation);
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show("No se pudo agregar la imagen. Por favor, corrobore la URL suministrada y vuelva a intentar.\nError: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }

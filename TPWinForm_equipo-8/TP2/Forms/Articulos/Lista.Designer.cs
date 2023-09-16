@@ -31,13 +31,23 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblTituloProductos = new Label();
             dgvArticulos = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            IdCategoria = new DataGridViewTextBoxColumn();
+            Marca = new DataGridViewTextBoxColumn();
+            IdMarca = new DataGridViewTextBoxColumn();
+            Imagenes = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             btnGrabarNuevo = new Button();
             picImagen = new PictureBox();
             btnNavIzq = new Button();
@@ -70,16 +80,6 @@
             Imagen = new DataGridViewImageColumn();
             Ruta = new DataGridViewTextBoxColumn();
             button1 = new Button();
-            Id = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Categoria = new DataGridViewTextBoxColumn();
-            IdCategoria = new DataGridViewTextBoxColumn();
-            Marca = new DataGridViewTextBoxColumn();
-            IdMarca = new DataGridViewTextBoxColumn();
-            Imagenes = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvArticulos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagen).BeginInit();
             pnlNavegacion.SuspendLayout();
@@ -148,6 +148,87 @@
             dgvArticulos.TabIndex = 1;
             dgvArticulos.RowHeaderMouseClick += dgvArticulos_RowHeaderMouseClick;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            Id.DefaultCellStyle = dataGridViewCellStyle2;
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // Codigo
+            // 
+            Codigo.DataPropertyName = "Codigo";
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // IdCategoria
+            // 
+            IdCategoria.DataPropertyName = "IdCategoria";
+            IdCategoria.HeaderText = "IdCategoria";
+            IdCategoria.Name = "IdCategoria";
+            IdCategoria.ReadOnly = true;
+            IdCategoria.Visible = false;
+            // 
+            // Marca
+            // 
+            Marca.DataPropertyName = "Marca";
+            Marca.HeaderText = "Marca";
+            Marca.Name = "Marca";
+            Marca.ReadOnly = true;
+            // 
+            // IdMarca
+            // 
+            IdMarca.DataPropertyName = "IdMarca";
+            IdMarca.HeaderText = "IdMarca";
+            IdMarca.Name = "IdMarca";
+            IdMarca.ReadOnly = true;
+            IdMarca.Visible = false;
+            // 
+            // Imagenes
+            // 
+            Imagenes.DataPropertyName = "Imagenes";
+            Imagenes.HeaderText = "Imagenes";
+            Imagenes.Name = "Imagenes";
+            Imagenes.ReadOnly = true;
+            Imagenes.Visible = false;
+            // 
+            // Precio
+            // 
+            Precio.DataPropertyName = "Precio";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0";
+            Precio.DefaultCellStyle = dataGridViewCellStyle3;
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
             // btnGrabarNuevo
             // 
             btnGrabarNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -170,7 +251,6 @@
             picImagen.SizeMode = PictureBoxSizeMode.Zoom;
             picImagen.TabIndex = 3;
             picImagen.TabStop = false;
-            picImagen.Click += picImagen_Click;
             // 
             // btnNavIzq
             // 
@@ -520,87 +600,6 @@
             button1.Text = "AGREGAR IMAGEN";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            Id.DefaultCellStyle = dataGridViewCellStyle2;
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
-            // Codigo
-            // 
-            Codigo.DataPropertyName = "Codigo";
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            // 
-            // IdCategoria
-            // 
-            IdCategoria.DataPropertyName = "IdCategoria";
-            IdCategoria.HeaderText = "IdCategoria";
-            IdCategoria.Name = "IdCategoria";
-            IdCategoria.ReadOnly = true;
-            IdCategoria.Visible = false;
-            // 
-            // Marca
-            // 
-            Marca.DataPropertyName = "Marca";
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            Marca.ReadOnly = true;
-            // 
-            // IdMarca
-            // 
-            IdMarca.DataPropertyName = "IdMarca";
-            IdMarca.HeaderText = "IdMarca";
-            IdMarca.Name = "IdMarca";
-            IdMarca.ReadOnly = true;
-            IdMarca.Visible = false;
-            // 
-            // Imagenes
-            // 
-            Imagenes.DataPropertyName = "Imagenes";
-            Imagenes.HeaderText = "Imagenes";
-            Imagenes.Name = "Imagenes";
-            Imagenes.ReadOnly = true;
-            Imagenes.Visible = false;
-            // 
-            // Precio
-            // 
-            Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            Precio.DefaultCellStyle = dataGridViewCellStyle3;
-            Precio.HeaderText = "Precio";
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
             // 
             // Lista
             // 

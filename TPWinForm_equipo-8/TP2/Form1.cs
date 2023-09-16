@@ -11,6 +11,7 @@ namespace TP2
         private Form? formActivo;
         private Lista lista = new Forms.Lista();
 
+
         public Form1()
         {
             InitializeComponent();
@@ -31,8 +32,6 @@ namespace TP2
             this.panelDesktop.Tag = childForm;
             lblInicio.Text = childForm.Text;
         }
-
-
         private void btnLista_Click(object sender, EventArgs e)
         {
             btnBuscar.Enabled = true;
@@ -63,6 +62,11 @@ namespace TP2
             Buscar buscar = new Buscar();
             buscar.ShowDialog();
             lista.filtrosBusqueda(buscar);
+        }
+
+        private void btnAcerca_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Forms.Acerca());
         }
     }
 }

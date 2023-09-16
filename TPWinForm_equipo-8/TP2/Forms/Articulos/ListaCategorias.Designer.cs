@@ -49,9 +49,10 @@
             // lblListaCategorias
             // 
             lblListaCategorias.AutoSize = true;
+            lblListaCategorias.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             lblListaCategorias.Location = new Point(12, 9);
             lblListaCategorias.Name = "lblListaCategorias";
-            lblListaCategorias.Size = new Size(63, 15);
+            lblListaCategorias.Size = new Size(105, 28);
             lblListaCategorias.TabIndex = 0;
             lblListaCategorias.Text = "Categorias";
             // 
