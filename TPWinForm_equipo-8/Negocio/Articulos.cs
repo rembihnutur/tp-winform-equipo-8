@@ -9,10 +9,8 @@ namespace Negocio
 
         public static List<Articulo> Listar()
         {
-            
-
-                AccesoDatos acceso = new AccesoDatos();
-                List<Articulo> articulos = new List<Articulo>();
+            AccesoDatos acceso = new AccesoDatos();
+            List<Articulo> articulos = new List<Articulo>();
 
             var lector = acceso.Leer("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, a.IdCategoria, c.Descripcion as Categoria, a.IdMarca, m.Descripcion as Marca FROM Articulos a LEFT OUTER JOIN Categorias c ON c.Id = a.IdCategoria LEFT OUTER JOIN Marcas m ON m.Id = a.IdMarca ORDER BY a.Id");
 
@@ -32,12 +30,10 @@ namespace Negocio
                     Imagenes = Imagenes.ByArticuloId((int)lector["Id"]),
                 };
 
-                    articulos.Add(aux);
-                }
+                articulos.Add(aux);
+            }
 
-                return articulos;
-            
-           
+            return articulos;
         }
 
         public static bool Existe(string codigo)
