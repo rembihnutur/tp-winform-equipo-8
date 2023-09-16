@@ -161,6 +161,9 @@ namespace TP2.Forms
             // Sabemos que por lo menos una de cada una vamos a tener seguro (por el .append).
             cmbMarca.SelectedIndex = 0;
             cmbCategoria.SelectedIndex = 0;
+
+            txtPrecio.Maximum = decimal.MaxValue;
+            txtPrecio.Minimum = 0;
         }
 
         public void AgregarImagen(PictureBox pic)
